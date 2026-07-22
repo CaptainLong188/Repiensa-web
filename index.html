@@ -4,8 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Re-piensa</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+
+    <!-- Mis estilos -->
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <h1>Es una organización que ... </h1>
+    <!-- Barra de navegación-->
+    <nav class="navbar navbar-expand-lg bg-body-navbar">
+        <div class="container-fluid">
+
+            <!-- Logo (Izquierda)-->
+            <a class="navbar-brand" href="#">
+                <img class="navbar-logo" src="/assets/img/test_img.png" alt="Logo de Re-piensa">
+            </a>
+            
+            <!-- Botón del escritorio, no pertenece al dropdown-->
+            <div class="navbar-button">
+                <a class="btn-unete" href="#">Únete/Contactanos</a>
+            </div>
+
+            <!-- Hamburger Toggler (A la derecha en celulares)-->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Menú Colapsable-->
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <!-- Menú --> 
+                <ul class="navbar-nav main-menu">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Proyectos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Recursos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Alianzas</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+
+    </main>
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Mi JavaScript-->
+     <script src="js/script.js"></script>
 </body>
 </html>
