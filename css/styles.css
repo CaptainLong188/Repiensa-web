@@ -74,9 +74,9 @@
         padding-inline: 2rem 6vw;
     }
 
-    .main-menu
+    #main-menu
     {
-        gap: 5vw;
+        gap: 6vw;
         margin-left: 5vw;
     }
 
