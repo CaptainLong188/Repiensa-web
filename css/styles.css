@@ -9,6 +9,7 @@
     /*-----Fonts-----*/
     --font-heading: 'Playfair Display', serif;
     --font-text: 'Josefin Sans', sans-serif;
+    --font-buttons: 'Outfit', sans-serif;
 }
 
 .bg-body-navbar {
@@ -125,16 +126,107 @@
 
 
 
-
-
-
-
-
-
 /*-------------- Landing Page --------------*/
 
-/* Project Section */
-.project-section {
+/*----Hero Section----*/
+
+#hero-section {
+    background-color: var(--color-1);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 4rem 5%;    
+    gap: 2rem;
+    min-height: 80vh; /*Ocupa el 80% del viewport*/
+}
+
+/* Lado izquierdo toma el 40% menos el gap*/
+#hero-section .hero-image {
+    flex: 0 0 calc(40% - 1rem);
+    display: flex;  
+    justify-content: center;
+}
+
+#hero-section .hero-image img{
+    max-width: 100%;
+    height: auto;
+}
+/* Lado derecho tome el 60% menos el gap*/
+#hero-section .hero-content {
+    flex: 0 0 calc(60% - 1rem);
+}
+
+#hero-section .hero-content .hero-title {
+    font-family: var(--font-heading);
+    color: var(--color-2);
+    font-size: 3rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1.5;
+    letter-spacing: 4%;
+    margin-bottom: 3rem;
+}
+
+#hero-section .hero-content .hero-description {
+    font-family: var(--font-text);
+    color: var(--color-5);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+#hero-section .hero-content .hero-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 1.25rem;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#hero-section .hero-content .hero-buttons .btn {
+    padding: 0.88rem 2rem;
+    border-radius: 50px;
+    border: 2px solid var(--color-5);
+    font-family: var(--font-buttons);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 10%;
+    text-transform: uppercase;
+    transition: all 2s ease;
+}
+
+#hero-section .hero-content .hero-buttons .btn-primary,
+#hero-section .hero-content .hero-buttons .btn-secondary:hover {
+    background-color: var(--color-2);
+    color: white;
+}
+
+#hero-section .hero-content .hero-buttons .btn-secondary,
+#hero-section .hero-content .hero-buttons .btn-primary:hover {
+    background-color: white;
+    color: var(--color-2);
+}
+
+/* Mobile Responsive adjustment */
+@media (max-width: 768px) {
+  #hero-section {
+    flex-direction: column; /* Stacks image on top, text below on mobile */
+  }
+  
+  #hero-section .hero-image,
+  #hero-section .hero-content {
+    flex: 0 0 100%;
+  }
+
+  #hero-section .hero-content .hero-buttons {
+    justify-content: center;
+  }
+}
+
+/*----Project Section----*/
+#project-section {
+    background-color: green;
     height: 800px;
     display: flex;
     flex-direction: row;
@@ -143,7 +235,7 @@
     padding: 50px;
 }
 
-.project-section .project {
+#project-section .project {
     width: 340px;
     margin: 10px 60px;
     border-radius: 20px;
@@ -154,6 +246,7 @@
 }
 
 .project-section-title {
+    margin-top: 20px;
     height: 80px;
     color: var(--color-1);
     font-family: var(--font-heading);
@@ -169,11 +262,11 @@
     text-align: center;
 }
 
-.project-section .project img {
+#project-section .project img {
     height: 200px;
 }
 
-.project-section .project-description {
+#project-section .project-description {
     font-family: var(--font-text);
     text-align: center;
     padding: 15px;
@@ -183,15 +276,15 @@
     line-height: 200%;
 }
 
-.project-section .project1,
-.project-section .project3{
+#project-section .project1,
+#project-section .project3{
     background-color: var(--color-3);
 }
 
-.project-section .project2 {
+#project-section .project2 {
     background-color: var(--color-4);
 }
 
-.project-section .project .middle-title {
+#project-section .project .middle-title {
     color: var(--color-2);
 } 
