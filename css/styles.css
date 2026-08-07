@@ -210,24 +210,32 @@
     #hero-section .hero-content .hero-title {
         grid-row: 1;
         margin-bottom: 2rem;
+        font-size: 2rem;
     }
 
     #hero-section .hero-content .hero-description {
         grid-row: 2;
         margin-bottom: 2rem;
+        font-size: 0.8rem;
     }
 
     #hero-section .hero-image img{
         grid-row: 3;
         width: 75%;
-        margin: 0 auto 1.5rems auto;     
+        margin: 0 auto 1.5rem auto;     
     }
 
     #hero-section .hero-content .hero-buttons {
         grid-row: 4;
         justify-content: center ;
         flex-wrap: wrap;
+        gap: 1.2rem;
         margin-top: 0;
+    }
+
+    #hero-section .hero-content .hero-buttons .btn {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.8rem;
     }
 }
 /* #endregion */
