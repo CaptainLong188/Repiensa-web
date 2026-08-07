@@ -53,3 +53,5 @@ const loadPage = async (route) => {
     const htmlData = await response.text()  // Convierte la respuesta en texto HTML
     DOM.mainContent.innerHTML = htmlData
 }
+
+loadPage("pages/home.html")

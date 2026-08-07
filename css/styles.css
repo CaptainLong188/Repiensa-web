@@ -108,28 +108,9 @@
     background-color: var(--color-1);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*-------------- Landing Page --------------*/
 
-/*----Hero Section----*/
-
+/* #region Hero Section */
 #hero-section {
     background-color: var(--color-1);
     display: flex;
@@ -152,6 +133,7 @@
     max-width: 100%;
     height: auto;
 }
+
 /* Lado derecho tome el 60% menos el gap*/
 #hero-section .hero-content {
     flex: 0 0 calc(60% - 1rem);
@@ -173,14 +155,15 @@
     color: var(--color-5);
     font-size: 1.1rem;
     line-height: 1.6;
+    letter-spacing: 4%;
     margin-bottom: 2rem;
 }
 
 #hero-section .hero-content .hero-buttons {
     display: flex;
     flex-direction: row;
-    gap: 1.25rem;
-    justify-content: space-evenly;
+    gap: 0.5rem;
+    justify-content: space-around;
     align-items: center;
 }
 
@@ -193,7 +176,7 @@
     font-weight: 700;
     letter-spacing: 10%;
     text-transform: uppercase;
-    transition: all 2s ease;
+    transition: all 1s ease;
 }
 
 #hero-section .hero-content .hero-buttons .btn-primary,
@@ -208,23 +191,48 @@
     color: var(--color-2);
 }
 
-/* Mobile Responsive adjustment */
-@media (max-width: 768px) {
-  #hero-section {
-    flex-direction: column; /* Stacks image on top, text below on mobile */
-  }
-  
-  #hero-section .hero-image,
-  #hero-section .hero-content {
-    flex: 0 0 100%;
-  }
+/* Ajuste para vista en movil */
+@media (max-width: 991px) {
+    
+    #hero-section {
+        display: grid;
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 3rem 2rem;
+        gap: 0;
+    }
 
-  #hero-section .hero-content .hero-buttons {
-    justify-content: center;
-  }
+    #hero-section .hero-content {
+        display: contents;
+    }
+
+    /* Reordernar el contenido */
+    #hero-section .hero-content .hero-title {
+        grid-row: 1;
+        margin-bottom: 2rem;
+    }
+
+    #hero-section .hero-content .hero-description {
+        grid-row: 2;
+        margin-bottom: 2rem;
+    }
+
+    #hero-section .hero-image img{
+        grid-row: 3;
+        width: 75%;
+        margin: 0 auto 1.5rems auto;     
+    }
+
+    #hero-section .hero-content .hero-buttons {
+        grid-row: 4;
+        justify-content: center ;
+        flex-wrap: wrap;
+        margin-top: 0;
+    }
 }
+/* #endregion */
 
-/*----Project Section----*/
+/* #region Project Section----*/
 #project-section {
     background-color: green;
     height: 800px;
@@ -288,3 +296,4 @@
 #project-section .project .middle-title {
     color: var(--color-2);
 } 
+/* #endregion */
