@@ -57,19 +57,29 @@ const loadPage = async (route) => {
 loadPage("pages/home.html")
 
 // Delegación de eventos
-DOM.mainContent.addEventListener("click", () => {
+DOM.mainContent.addEventListener("click", (event) => {
     
     // Verificar si se hace click al boton primario
     if(event.target.matches("#primary-btn"))
     {
-        event.preventDefault();
+        event.preventDefault()
         loadPage("pages/nosotros.html")
+        return 
     }
 
     // Verificar si se hace click al boton secundario
     if (event.target.matches("#secondary-btn"))
     {
-        event.preventDefault();
+        event.preventDefault()
         loadPage("pages/proyectos.html")
+        return 
+    }
+
+    // Verificar si se hace click al boton secundario
+    if (event.target.matches("#join-btn"))
+    {
+        event.preventDefault()
+        loadPage("pages/proyectos.html")
+        return 
     }
 })
