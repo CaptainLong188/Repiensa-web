@@ -1,57 +1,129 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Re-piensa</title>
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Outfit:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=League+Spartan:wght@100..900&family=Outfit:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+    />
 
     <!-- Mis estilos -->
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
     <!-- Barra de navegación-->
     <nav class="navbar navbar-expand-lg bg-body-navbar">
-        <div class="container-fluid">
+      <div class="container-fluid">
+        <!-- Logo (Izquierda)-->
+        <a class="navbar-brand" href="#" id="logo-navbar">
+          <img
+            class="navbar-logo"
+            src="assets/img/logo-todo.png"
+            alt="Logo de Re-piensa"
+          />
+        </a>
 
-            <!-- Logo (Izquierda)-->
-            <a class="navbar-brand" href="#" id="logo-navbar">
-                <img class="navbar-logo" src="assets/img/test_img.png" alt="Logo de Re-piensa">
-            </a>
-            
-            <!-- Botón del escritorio, no pertenece al dropdown-->
-            <div class="navbar-button">
-                <a class="btn-unete" href="#">Únete/Contactanos</a>
-            </div>
-
-            <!-- Hamburger Toggler (A la derecha en celulares)-->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <!-- Menú Colapsable-->
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <!-- Menú --> 
-                <ul class="navbar-nav" id="main-menu">
-                </ul>
-            </div>
+        <!-- Botón del escritorio, no pertenece al dropdown-->
+        <div class="navbar-button">
+          <a class="btn-unete" href="#">Únete/Contactanos</a>
         </div>
+
+        <!-- Hamburger Toggler (A la derecha en celulares)-->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Menú Colapsable-->
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <!-- Menú -->
+          <ul class="navbar-nav" id="main-menu"></ul>
+        </div>
+      </div>
     </nav>
 
-    <main id="main-content">
-    </main>
+    <!-- Using SPA-->
+    <main id="main-content"></main>
+
+    <footer class="footer-site">
+      <div class="footer-brand">
+        <img class="footer-logo" src="/assets/img/logo-todo.png" alt="Re-Piensa logo" />
+        <p class="footer-tagline">
+          Organización juvenil re-pensando la salud mental mediante la
+          psicoeducación
+        </p>
+        <div class="footer-follow">
+          <span>Síguenos</span>
+          <div class="social-icons">
+            <a href="#" aria-label="Instagram">
+              <img src="assets/img/instagram.svg" alt="Instagram" />
+            </a>
+            <a href="#" aria-label="LinkedIn">
+              <img src="assets/img/linkedin.svg" alt="LinkedIn" />
+            </a>
+          </div>
+        </div>
+        <a class="footer-btn" href="#">Únete</a>
+      </div>
+
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Nosotros</h4>
+          <ul>
+            <li><a href="#">Mision</a></li>
+            <li><a href="#">Vision</a></li>
+            <li><a href="#">Origen de la organización</a></li>
+            <li><a href="#">Equipo voluntario</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Recursos</h4>
+          <ul>
+            <li><a href="#">Materiales psicoeducativos</a></li>
+            <li><a href="#">Artículos</a></li>
+            <li><a href="#">Ediciones pasadas newsletter</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+            <h4>Proyectos</h4>
+            <ul>
+                <li><a href="#">Ciclo Re-piensa</a></li>
+                <li><a href="#">Check-in Mental</a></li>
+                <li><a href="#">Psicoeducación en Instagram</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h4>Alianzas</h4>
+            <ul>
+                <li><a href="#">Organizaciones</a></li>
+            </ul>
+        </div>
+      </div>
+    </footer>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Mi JavaScript-->
-     <script src="js/app.js" type="module"></script>
-</body>
+    <script src="js/app.js" type="module"></script>
+  </body>
 </html>

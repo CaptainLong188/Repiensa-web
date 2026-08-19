@@ -10,6 +10,7 @@
     --font-heading: 'Playfair Display', serif;
     --font-text: 'Josefin Sans', sans-serif;
     --font-buttons: 'Outfit', sans-serif;
+    --font-footer: 'League Spartan', sans-serif;
 }
 
 .bg-body-navbar {
@@ -522,3 +523,118 @@
         margin-bottom: 1rem;
     }   
 }
+/* #endregion */
+
+/* #region Footer */
+
+.footer-site {
+    background-color: var(--color-2);
+    color: var(--color-1);
+    padding: 3rem 4rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    font-family: var(--font-footer);
+}
+
+.footer-site .footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 300px;
+}
+
+.footer-site .footer-brand .footer-logo {
+    width:  150px;
+    height: auto;
+    margin-bottom: 1.5rem;
+}
+
+.footer-site .footer-brand .footer-tagline {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    letter-spacing: 5%;
+    margin-bottom: 2rem;
+}
+
+.footer-site .footer-brand .footer-follow {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+.footer-site .footer-brand .footer-follow .social-icons {
+    display: flex;
+    gap: 1rem;
+}
+
+.footer-site .footer-brand .footer-follow .social-icons img {
+    width: 35px;
+    height: auto;
+}
+
+.footer-site .footer-brand .footer-btn {
+    border: 2px solid var(--color-1);
+    color: var(--color-1);
+    padding: 10px 32px;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.footer-site .footer-links {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: auto auto;
+    column-gap: 8rem;
+    row-gap: 1.5rem;
+}
+
+.footer-site .footer-links .footer-col h4 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0 0 1rem;
+}
+
+.footer-site .footer-links .footer-col ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footer-site .footer-links .footer-col li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-site .footer-links .footer-col a {
+    color: var(--color-1);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    opacity: 0.90;
+}
+
+.footer-site .footer-links .footer-col a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 991px) {
+
+    .footer-site {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 4rem;
+    }
+
+    .footer-site .footer-links {
+        gap: 4rem;
+    }
+}
+
+/* #endregion */
