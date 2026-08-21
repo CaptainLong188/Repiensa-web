@@ -7,6 +7,7 @@
     --color-6: #AA6754;
 
     /*-----Fonts-----*/
+    --font-navbar: 'Roboto', sans-serif;
     --font-heading: 'Playfair Display', serif;
     --font-text: 'Josefin Sans', sans-serif;
     --font-buttons: 'Outfit', sans-serif;
@@ -42,7 +43,7 @@
 }
 
 .nav-link {
-    font: 'Roboto', sans-serif;
+    font-family: var(--font-navbar);
     font-size: 18px;
     font-weight: 500;
     text-align: center;
@@ -50,7 +51,7 @@
 }
 
 .btn-unete {
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--font-navbar);
     font-size: 18px;
     font-weight: 500;
     background-color: var(--color-3);
@@ -62,7 +63,7 @@
 
 /* ---------- Desktop ---------- */
 
-@media (min-width: 992px) 
+@media (min-width: 1200px) 
 {
 
     .navbar-button {
@@ -88,7 +89,6 @@
 
     .navbar-nav .nav-link
     {
-        font-family: 'Roboto', sans-serif;
         font-size: 20px;
         font-weight: 500;
         color: white;
@@ -97,7 +97,6 @@
 
     .navbar-nav .nav-link.active
     {
-        font-family: 'Roboto', sans-serif;
         font-size: 20px;
         color: var(--color-3);
         font-weight: bold;
@@ -118,7 +117,7 @@
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
-    padding: 4rem 5%;    
+    padding: 5rem 5%;    
     gap: 2rem;
     min-height: 80vh; /*Ocupa el 80% del viewport*/
 }
@@ -359,12 +358,12 @@
     padding: 4rem 2%;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: space-around;
 }
 
 #project-section .project {
-    width: 340px;
+    width: 22.5%;
     margin: 10px 60px;
     border-radius: 20px;
     padding: 5px;
@@ -415,6 +414,18 @@
     color: var(--color-2);
 } 
 
+
+/* Los tres cardes siempre deben estar alineados*/
+@media (min-width: 992px) and (max-width: 1436px) {    
+    
+    
+    #project-section .project {
+        width: 25%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
 @media (max-width: 991px) {
     
     #project-section {
@@ -449,6 +460,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
 }
 
 #newsletter-section .newsletter-section-title {
@@ -591,7 +603,7 @@
     display: grid;
     grid-template-columns: repeat(2, auto);
     grid-template-rows: auto auto;
-    column-gap: 8rem;
+    column-gap: 10rem;
     row-gap: 1.5rem;
 }
 
@@ -633,7 +645,15 @@
     }
 
     .footer-site .footer-links {
-        gap: 4rem;
+        gap: 2.5rem;
+    }
+
+    .footer-site .footer-links .footer-col h4 {
+        font-size: 1.5rem;
+    }
+
+    .footer-site .footer-links .footer-col a {
+        font-size: 0.8rem;
     }
 }
 

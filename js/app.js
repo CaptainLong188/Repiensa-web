@@ -5,17 +5,27 @@ const menuItems = [
     {name: "Nosotros", title: "Conócenos", route: "pages/nosotros.html"},
     {name: "Proyectos", title: "Nuestras iniciativas", route: "pages/proyectos.html"},
     {name: "Recursos", title: "Material educativo", route: "pages/recursos.html"},
-    {name: "Alianzas", title: "Nuestros aliados", route: "pages/alianzas.html"}
+    {name: "Alianzas", title: "Nuestros aliados", route: "pages/alianzas.html"},
 ]
 
 const DOM = {
     logoNavbar: document.getElementById("logo-navbar"),
+    buttonNavbar: document.getElementsByClassName("btn-unete")[0],
     mainMenu: document.getElementById("main-menu"),
-    mainContent: document.getElementById("main-content")
+    mainContent: document.getElementById("main-content"),
+    buttonFooter: document.getElementsByClassName("footer-btn")[0]
 }
 
 DOM.logoNavbar.addEventListener("click", () => {
     loadPage("pages/home.html")
+})
+
+DOM.buttonNavbar.addEventListener("click", () => {
+    loadPage("pages/unete.html")
+})
+
+DOM.buttonFooter.addEventListener("click", () => {
+    loadPage("pages/unete.html")
 })
 
 // Fragmento de memoria para construir el menú en memoria
@@ -75,11 +85,11 @@ DOM.mainContent.addEventListener("click", (event) => {
         return 
     }
 
-    // Verificar si se hace click al boton secundario
+    // Verificar si se hace click al boton para unirse
     if (event.target.matches("#join-btn"))
     {
         event.preventDefault()
-        loadPage("pages/proyectos.html")
+        loadPage("pages/unete.html")
         return 
     }
 })
