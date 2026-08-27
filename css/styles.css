@@ -1,6 +1,6 @@
 :root {
     --color-1: #F1ECE4;
-    --color-2: #7C1C45;
+    --color-2: #7c1c45;
     --color-3: #C4839E;
     --color-4: #C0A4CA;
     --color-5: #481158;
@@ -14,6 +14,7 @@
     --font-footer: 'League Spartan', sans-serif;
 }
 
+/* #region Navbar*/
 .bg-body-navbar {
     background-color: var(--color-2);
 }
@@ -23,7 +24,7 @@
     height: auto;
 }
 
-/* ---------- Mobile View (Default ---------- */
+/* ---------- Mobile View (Default) ---------- */
 
 /* Centra el botón entre el logo y el toggler*/
 .navbar-button {
@@ -107,6 +108,7 @@
 #main-content {
     background-color: var(--color-1);
 }
+/* #endregion */
 
 /*-------------- Landing Page --------------*/
 
@@ -129,7 +131,7 @@
     justify-content: center;
 }
 
-#hero-section .hero-image img{
+#hero-section .hero-image img {
     max-width: 100%;
     height: auto;
 }
@@ -378,13 +380,13 @@
     color: var(--color-1);
     font-family: var(--font-heading);
     font-size: x-large;
-    font-weight: 700;
+    font-weight: bolder;
     text-transform: uppercase;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    letter-spacing: 4%;
+    letter-spacing: 0.04em;
 }
 
 #project-section .project img {
@@ -395,9 +397,8 @@
     font-family: var(--font-text);
     text-align: center;
     padding: 15px;
-    letter-spacing: 10%;
-    margin: auto;
-    font-weight: 700;
+    letter-spacing: 0.04em;
+    font-weight: 600;
     line-height: 200%;
 }
 
@@ -558,7 +559,7 @@
 }
 
 .footer-site .footer-brand .footer-logo {
-    width:  150px;
+    width:  clamp(50px, 20vw, 150px);
     height: auto;
     margin-bottom: 1.5rem;
 }
@@ -656,5 +657,166 @@
         font-size: 0.8rem;
     }
 }
+
+/* #endregion */
+
+/*-------------- Nosotros Page --------------*/
+
+/* #region Banner Section*/
+/* TODO FIX BANNER ON SMALLER SCREEN*/
+.nosotros-banner {
+    position: relative;
+    background-color: var(--color-2);
+    height: clamp(320px, 55vw, 620px);
+    overflow: hidden; /* so cropped image doesn't spill out */
+}
+
+.nosotros-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.nosotros-banner h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    margin: 0;
+    white-space: nowrap;
+    
+    font-family: var(--font-heading);
+    font-size: clamp(1.5rem, 5vw, 5rem);
+    font-weight: 600;
+    letter-spacing: 2%;
+    text-transform: uppercase;
+    text-align: center;
+    color: white;
+}
+
+@media (max-width: 991px) {
+
+}
+/* #endregion*/
+
+/* #region Mision-Vision Section*/
+.mision-vision-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: nowrap;
+    padding: 4rem 5%;
+}
+
+.mision-vision-section .mision,
+.mision-vision-section .vision {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    max-width: 350px;
+}
+.mision-vision-section .mision h2,
+.mision-vision-section .vision h2 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    text-transform: uppercase;
+    color: var(--color-2);
+    letter-spacing: 0.02em;
+}
+.mision-vision-section .content {
+    background-color: rgb(124, 28, 69, 0.8);
+    color: var(--color-1);
+    font-family: var(--font-text);
+    font-weight: 400;
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    letter-spacing: 0.04em;
+    line-height: 2;
+    padding: clamp(1.5rem, 4vw, 2.5rem) clamp(1.25rem, 3vw, 2rem);    
+    border-radius: 20px;
+    flex: 1; /* Grow to fill the column*/
+    display: flex; 
+    align-items: center;
+}
+
+@media (max-width: 991px) {
+    
+    .mision-vision-section {
+        flex-direction: column;   
+        align-items: center;
+        gap: 3rem;
+    }
+
+    .mision-vision-section .mision,
+    .mision-vision-section .vision {
+        width: 90%;
+    }
+} 
+/* #endregion */
+
+/* #region Origen Section*/
+.origen-section {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 4rem 5%;
+    flex-wrap: wrap;
+}
+
+.origen-section .origen-shape {
+    position: relative; 
+    flex-shrink: 0;
+    width: clamp(260px, 28vw, 340px);
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem;
+}   
+
+.origen-section .origen-shape .origen-shape-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.origen-section .origen-shape h2 {
+    position: relative;
+    z-index: 1;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    text-align: center;
+    line-height: 2;
+    margin: 0;
+}
+
+.origen-text {
+    flex: 1;
+    min-width: 280px;
+    max-width: 560px;
+    font-family: var(--font-text);
+    font-weight: 500;
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    line-height: 2;
+    letter-spacing: 0.02em;
+    text-align: center;
+}
+
+@media (max-width: 991px) {
+    
+    .origen-section {
+        flex-direction: column;
+        gap: 2.5rem;
+        padding: 0rem 6%;
+    }
+} 
 
 /* #endregion */
