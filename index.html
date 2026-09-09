@@ -18,6 +18,8 @@
 
     <!-- Mis estilos -->
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="preload" as="image" href="/assets/img/nosotros.svg" fetchpriority="high">
+
   </head>
   <body>
     <!-- Barra de navegación-->
@@ -27,7 +29,7 @@
         <a class="navbar-brand" href="#" id="logo-navbar">
           <img
             class="navbar-logo"
-            src="assets/img/logo-todo.png"
+            src="/assets/img/logo_todo.jpg"
             alt="Logo de Re-piensa"
           />
         </a>
@@ -63,7 +65,7 @@
 
     <footer class="footer-site">
       <div class="footer-brand">
-        <img class="footer-logo" src="assets/img/logo-todo.png" alt="Re-Piensa logo" />
+        <img class="footer-logo" src="/assets/img/logo_todo.jpg" alt="Re-Piensa logo" />
         <p class="footer-tagline">
           Organización juvenil re-pensando la salud mental mediante la
           psicoeducación
@@ -86,10 +88,10 @@
         <div class="footer-col">
           <h4>Nosotros</h4>
           <ul>
-            <li><a href="#">Mision</a></li>
-            <li><a href="#">Vision</a></li>
-            <li><a href="#">Origen de la organización</a></li>
-            <li><a href="#">Equipo voluntario</a></li>
+            <li><a href="#" class="footer-anchor-link" data-route="pages/nosotros.html" data-target="mision">Mision</a></li>
+            <li><a href="#" class="footer-anchor-link" data-route="pages/nosotros.html" data-target="vision">Vision</a></li>
+            <li><a href="#" class="footer-anchor-link" data-route="pages/nosotros.html" data-target="origen">Origen de la organización</a></li>
+            <li><a href="#" class="footer-anchor-link" data-route="pages/nosotros.html" data-target="equipo">Equipo voluntario</a></li>
           </ul>
         </div>
 

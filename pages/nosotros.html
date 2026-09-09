@@ -1,10 +1,10 @@
 <section class="nosotros-banner">
-    <img src="/assets/img/nosotros.svg" alt="Banner de la sección nosotros">
+    <img src="/assets/img/nosotros.svg" alt="Banner de la sección nosotros" fetchpriority="high">
     <h1>Conoce Re-piensa</h1>
 </section>
 
 <section class="mision-vision-section">
-    <div class="mision">
+    <div class="mision" id="mision">
         <h2>Misión</h2>
         <p class="content">
             Promover la alfabetización en salud mental y reducir el estigma alrededor de la ansiedad, 
@@ -12,7 +12,7 @@
             iniciativas accesibles, juveniles y basadas en evidencia para jóvenes de Latinoamérica.
         </p>
     </div>
-    <div class="vision">
+    <div class="vision" id="vision">
         <h2>Visión</h2>
         <p class="content">
             Ser una referencia juvenil latinoamericana en educación en salud mental, donde más 
@@ -22,7 +22,7 @@
     </div>
 </section>
 
-<section class="origen-section">
+<section class="origen-section" id="origen">
     <div class="origen-shape">
         <img src="/assets/img/origen-octagon.svg" alt="" class="origen-shape-svg">
         <h2>Origen de la<br>organización</h2>
@@ -33,4 +33,104 @@
         empatía y comunidad sí puede cambiar vidas. Surgió como respuesta a una realidad marcada 
         por el estigma, la desinformación y la falta de espacios accesibles para jóvenes en Latinoamérica.
     </p>
+</section>
+
+<section class="fundadora-section" id="fundadora">
+    <div class="fundadora-text">
+        <p>
+            Anna es una estudiante de último año de secundaria y bailarina competitiva de Perú, 
+            apasionada por la mente humana y por reducir el estigma en torno a la salud mental 
+            en Latinoamérica. Su interés profundo por la psicología, la investigación y la defensa 
+            de personas con TOC y otros trastornos psiquiátricos en la región la llevó a crear Re-piensa, 
+            una organización juvenil que acerca la psicoeducación y la comunidad a adolescentes y jóvenes. 
+            Además, desarrolla proyectos de investigación en neurociencia y aspira a estudiar esta área, 
+            manteniendo como eje de su liderazgo la salud integral de las personas y la construcción de 
+            espacios seguros y colaborativos para quienes buscan acompañamiento informado.
+        </p>
+        <p class="fundadora-signature">
+            Nuestra Fundadora &amp; Directora <br>
+            Anna Soto S.
+        </p>
+    </div>
+
+    <div class="fundadora-photo">
+        <img src="/assets/img/anna-soto.jpeg" alt="Anna Soto S., fundadora y directora de Re-piensa">
+    </div>
+</section>
+
+<section class="equipo-section" id="equipo">
+    <h2>Equipo Voluntario</h2>
+    <p class="equipo-subtitle">Contamos con las siguientes áreas en nuestro equipo voluntario</p>
+
+    <div class="accordion equipo-accordion" id="equipoAccordion">
+
+        <div class="accordion-item">
+            <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#area1">
+                    Área de investigación y psicoeducación
+                </button>
+            </h3>
+            <div id="area1" class="accordion-collapse collapse" data-bs-parent="#equipoAccordion">
+                <div class="accordion-body">
+                    <p>
+                        Se encarga de diseñar y revisar el contenido técnico sobre salud mental, 
+                        investigar fuentes confiables y transformar la evidencia científica en 
+                        materiales psicoeducativos claros y accesibles para adolescentes y jóvenes.                
+                    </p>    
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#area2">
+                    Área de contenido y diseño
+                </button>
+            </h3>
+            <div id="area2" class="accordion-collapse collapse" data-bs-parent="#equipoAccordion">
+                <div class="accordion-body">
+                    <p>
+                        Produce las piezas visuales y textos para redes, presentaciones y recursos 
+                        digitales. Su foco es traducir los temas de salud mental a formatos atractivos, 
+                        coherentes con la identidad de Re-piensa y fáciles de comprender
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#area3">
+                    Área de redes y comunidad
+                </button>
+            </h3>
+            <div id="area3" class="accordion-collapse collapse" data-bs-parent="#equipoAccordion">
+                <div class="accordion-body">
+                    <p>
+                        Gestiona la presencia de Re-piensa en redes sociales, la newsletter y la interacción 
+                        con la audiencia. Busca construir una comunidad cercana, acompañar conversaciones y
+                        difundir nuestros proyectos y contenidos.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#area4">
+                    Área de gestión de proyectos
+                </button>
+            </h3>
+            <div id="area4" class="accordion-collapse collapse" data-bs-parent="#equipoAccordion">
+                <div class="accordion-body">
+                    <p>
+                        Planifica, coordina y da seguimiento a los talleres, ciclos y colaboraciones 
+                        de Re-piensa. Organiza la logística, los cronogramas y el trabajo entre áreas
+                        para que cada proyecto se desarrolle de forma ordenada y sostenible.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </section>

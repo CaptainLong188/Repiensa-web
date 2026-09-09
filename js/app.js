@@ -58,10 +58,33 @@ menuItems.forEach(({name, title, route}) => {
 // Insertar todo el menú en el DOM
 DOM.mainMenu.appendChild(fragmentMain)   
 
-const loadPage = async (route) => {
-    const response = await fetch(route)     // Solicita el archivo HTML al servidor
-    const htmlData = await response.text()  // Convierte la respuesta en texto HTML
-    DOM.mainContent.innerHTML = htmlData
+let currentRoute = null 
+
+const loadPage = async (route, scrollTargetId = null) => {
+    
+    // Solo volver a solicitar el HTML si es una página distinta a la actual
+    if (route != currentRoute)
+    {
+        const response = await fetch(route)     // Solicita el archivo HTML al servidor
+        const htmlData = await response.text()  // Convierte la respuesta en texto HTML
+        DOM.mainContent.innerHTML = htmlData
+        currentRoute = route
+    }
+
+    if (scrollTargetId) 
+    {
+        requestAnimationFrame(() => {
+            const target = document.getElementById(scrollTargetId)
+            if (target) {
+                target.scrollIntoView({behavior: "smooth", block: "center"})
+            }
+        })
+    }
+    else
+    {
+        window.scrollTo({top: 0}) // Comportamiento normal: subir al inicio en navegación regular
+    }
+ 
 }
 
 loadPage("pages/home.html")
@@ -92,4 +115,13 @@ DOM.mainContent.addEventListener("click", (event) => {
         loadPage("pages/unete.html")
         return 
     }
+})
+
+document.querySelectorAll(".footer-anchor-link").forEach(link => {
+    link.addEventListener("click", (event) => {
+        event.preventDefault()
+        const route = link.getAttribute("data-route")
+        const target = link.getAttribute("data-target")
+        loadPage(route, target)
+    })
 })
