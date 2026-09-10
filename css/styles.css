@@ -1011,7 +1011,7 @@
     border-radius: 50%;
     object-fit: cover;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.40);
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
 }
 
 .aliado-name {
@@ -1031,13 +1031,13 @@
 
 @media (max-width: 576px) {
     .aliados-grid {
-        gap: 4rem;
+        gap: 3rem;
     }
     
     .aliados-row {
         flex-direction: column;
         align-items: center;
-        gap: 4rem;
+        gap: 3rem;
     }
 
     .aliado-item {
@@ -1045,5 +1045,80 @@
     }
 }
 /* #endregion*/
+
+.aliado-link {
+    position: relative;
+    display: inline-block;
+    border-radius: 50%;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.aliado-link:hover {
+    transform: scale(1.1) rotate(-3deg);
+}
+
+.aliado-logo {
+    transition: box-shadow 0.3s ease;
+}
+
+.aliado-link:hover .aliado-logo {
+    box-shadow: 0 0 0 4px var(--color-2);
+}
+
+.aliado-badge {
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: scale(0.6);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.aliado-link:hover .aliado-badge {
+    opacity: 1;
+    transform: scale(1.5);
+}
+
+.aliado-item {
+    opacity: 1;
+    transform: none;
+}
+
+.aliados-grid.js-ready .aliado-item {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.aliados-grid.js-ready .aliado-item.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .aliado-link, .aliado-logo, .aliado-badge, .aliado-item,
+    .aliados-grid.js-ready .aliado-item {
+        transition: none !important;
+    }
+
+    .aliados-grid.js-ready .aliado-item {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
+
+@media (max-width: 991px) {
+    .aliado-link:hover .aliado-badge {
+        transform: scale(0.8);
+    }
+}
+
 
 /*END*/

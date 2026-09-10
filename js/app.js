@@ -69,6 +69,11 @@ const loadPage = async (route, scrollTargetId = null) => {
         const htmlData = await response.text()  // Convierte la respuesta en texto HTML
         DOM.mainContent.innerHTML = htmlData
         currentRoute = route
+
+        if (route == "pages/alianzas.html")
+        {
+            initAliadosAnimation()
+        }
     }
 
     if (scrollTargetId) 
@@ -84,7 +89,27 @@ const loadPage = async (route, scrollTargetId = null) => {
     {
         window.scrollTo({top: 0}) // Comportamiento normal: subir al inicio en navegación regular
     }
- 
+}
+
+const initAliadosAnimation = () => {
+    const grid = DOM.mainContent.querySelector(".aliados-grid")
+    const items = DOM.mainContent.querySelectorAll(".aliado-item")
+    if (!items.length || !grid) return
+
+    grid.classList.add("js-ready")
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                const index = Array.from(items).indexOf(entry.target)
+                entry.target.style.transitionDelay = `${index * 90}ms`
+                entry.target.classList.add("is-visible")
+                observer.unobserve(entry.target)
+            }
+        })
+    }, { threshold: 0.2 })
+
+    items.forEach((item) => observer.observe(item))
 }
 
 loadPage("pages/home.html")
