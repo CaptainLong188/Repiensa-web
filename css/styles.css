@@ -12,6 +12,7 @@
     --font-text: 'Josefin Sans', sans-serif;
     --font-buttons: 'Outfit', sans-serif;
     --font-footer: 'League Spartan', sans-serif;
+    --font-partner: 'Merriweather', sans-serif;
 }
 
 /* #region Navbar*/
@@ -660,7 +661,7 @@
 
 /* #endregion */
 
-/*-------------- Nosotros Page --------------*/
+/*-------------- Nosotros --------------*/
 
 /* #region Banner Section*/
 /* TODO FIX BANNER ON SMALLER SCREEN*/
@@ -964,3 +965,85 @@
     margin-bottom: 0;
 }
 /* #endregion */
+
+/*-------------- Alianzas --------------*/
+
+/* #region Alianzas */
+.aliados {
+  padding: clamp(2rem, 5vw, 4rem) clamp(1rem, 6vw, 3rem);
+  text-align: center;
+}
+
+.aliados-intro {
+    font-family: var(--font-text);
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+    font-weight: 700;
+    max-width: 75vw;
+    margin: 0 auto clamp(2rem, 4vw, 3rem);
+    letter-spacing: 0.04em;
+    line-height: 2;
+}
+
+.aliados-grid {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.5rem, 4vw, 3rem);
+}
+
+.aliados-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: clamp(1.5rem, 4vw, 3rem) clamp(2rem, 5vw, 4rem);
+}
+
+.aliado-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: clamp(200px, 20vw, 300px);
+}
+
+.aliado-logo {
+    width: clamp(150px, 15vw, 200px);
+    height: clamp(150px, 15vw, 200px);
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.40);
+    margin-bottom: 0.75rem;
+}
+
+.aliado-name {
+    font-family: var(--font-partner);
+    font-size: clamp(1rem, 1.3vw, 1.2rem);
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    color: var(--color-2);
+    margin: 0;
+}
+
+@media (max-width: 991px) {
+    .aliado-item {
+        width: clamp(140px, 32vw, 180px);
+    }
+}
+
+@media (max-width: 576px) {
+    .aliados-grid {
+        gap: 4rem;
+    }
+    
+    .aliados-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 4rem;
+    }
+
+    .aliado-item {
+        width: clamp(150px, 45vw, 180px);
+    }
+}
+/* #endregion*/
+
+/*END*/
