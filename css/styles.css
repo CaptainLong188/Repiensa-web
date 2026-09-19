@@ -664,7 +664,6 @@
 /*-------------- Nosotros --------------*/
 
 /* #region Banner Section*/
-/* TODO FIX BANNER ON SMALLER SCREEN*/
 .nosotros-banner {
     position: relative;
     background-color: var(--color-2);
@@ -673,7 +672,7 @@
 }
 
 .nosotros-banner img {
-    width: 100%;
+    width: 100%;    
     height: 100%;
     object-fit: cover;
     display: block;
@@ -697,7 +696,15 @@
 }
 
 @media (max-width: 991px) {
+    .nosotros-banner {
+        height: auto;
+        aspect-ratio: 4 / 5;
+    }
 
+    .nosotros-banner h1 {
+        white-space: normal;
+        width: 90%;
+    }
 }
 /* #endregion*/
 
@@ -1133,7 +1140,7 @@
         cursor: pointer;
         transition: transform 0.2s ease, opacity 0.2s ease;
     }
-    
+
     .talleres-showcase .coverflow-arrow img {
         width: 100%;
         height: 100%;
