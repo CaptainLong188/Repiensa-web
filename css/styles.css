@@ -13,6 +13,7 @@
     --font-buttons: 'Outfit', sans-serif;
     --font-footer: 'League Spartan', sans-serif;
     --font-partner: 'Merriweather', sans-serif;
+    --font-form: 'Merriweather', sans-serif;
 }
 
 /* #region Navbar*/
@@ -1524,4 +1525,270 @@
         transform: scale(0.8);
     }
 }
-/* #endregion*/
+/* #endregion */
+
+/*-------------- Únete --------------*/
+
+/* #region Contacto */
+.contacto {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: auto 1fr;
+    column-gap: clamp(1.5rem, 4vw, 4rem);
+    row-gap: clamp(1.5rem, 3vw, 2.5rem);
+    align-items: start;
+    padding: clamp(1.5rem, 4vw, 3rem);
+    letter-spacing: 0.02em;
+}
+
+.contacto-intro {
+    grid-column: 1;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.contacto-form {
+    grid-column: 2;
+    grid-row: 1 /span 2;
+    align-self: stretch;
+}
+
+.contacto-directora {
+    grid-column: 1;
+    grid-row: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contacto-title {
+    margin: 0;
+    color: var(--color-2);
+    font-family: var(--font-heading);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.contacto-text {
+    margin: 0;
+    font-size: clamp(1.0rem, 1.25vw, 1.1rem);
+    font-weight: 500;
+    line-height: 1.7;
+}
+
+.contacto-form {
+    padding: clamp(1.25rem, 3vw, 2.5rem);
+    font-family: var(--font-form);
+    background-color: rgba(124, 28, 69, 0.85);
+    color: white;
+}
+
+.contacto-form-title {
+    margin-bottom: 2.0rem;
+    font-size: clamp(1.25rem, 2vw, 1.6rem);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+}
+
+.contacto-form-hint {
+    margin-bottom: 1.5rem;
+    font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+    line-height: 1.5;    
+    letter-spacing: 0.04em;
+}
+
+.contacto-field {
+    margin-bottom: clamp(0.9rem, 2vw, 1.4rem);
+}
+
+.contacto-label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-size: clamp(0.9rem, 1.1vw, 1rem);
+    text-align: left;
+}
+
+.contacto-input, .contacto-textarea {
+    display: block;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid transparent;
+    border-radius: 0;
+    font-size: clamp(0.9rem, 1.1vw, 1rem);
+}
+
+.contacto-textarea {
+    min-height: 8rem;
+    resize: vertical;
+}
+
+.contacto-input::placeholder, .contacto-textarea::placeholder {
+    color: var(--color-4);
+    opacity: 1;
+}
+
+.contacto-input:focus-visible, .contacto-textarea:focus-visible {
+    outline: 3px solid var(--color-2);
+    outline-offset: 2px;
+}
+
+.contacto-honeypot {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.contacto-consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    margin-bottom: 1.5rem;
+    cursor: pointer;
+}
+
+.contacto-consent-input {
+    flex-shrink: 0;
+    width: 1.15rem;
+    height: 1.15rem;
+    margin-top: 0.15rem;
+    accent-color: var(--color-3);
+}
+ 
+.contacto-consent-text {
+    font-size: clamp(0.8rem, 1vw, 0.9rem);
+    line-height: 1.5;
+}
+
+.contacto-btn {
+    display: block;
+    margin: 0 auto;
+    padding: 0.9rem 2.25rem;
+    border: 1px solid black;
+    border-radius: 999px;
+    background-color: #ffffff;
+    color: var(--color-2);
+    font-family: var(--font-buttons);
+    font-size: clamp(1rem, 1.2vw, 1.1rem);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.contacto-btn:hover {
+    background-color: var(--color-2);
+    color: white;
+}
+ 
+.contacto-status {
+    min-height: 1.5rem;
+    margin: 1rem 0 0;
+    font-size: clamp(0.85rem, 1vw, 0.95rem);
+    line-height: 1.5;
+}
+/* #endregion */
+
+/* #region Directora */
+.contacto-directora-text {
+    margin: 0;
+    font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+    font-weight: 500;
+    line-height: 1.7;
+}
+
+.contacto-card {
+    display: flex;
+    align-items: center;
+    gap: clamp(1rem, 2vw, 1.5rem);
+    padding: clamp(1rem, 2vw, 1.5rem);
+    background-color: white;
+}
+
+.contacto-avatar {
+    flex-shrink: 0;
+    width: clamp(4.5rem, 8vw, 6rem);
+    height: auto;
+}
+
+.contacto-card-body {
+    min-width: 0;
+}
+
+.contacto-name {
+    margin: 0;
+    font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+    font-weight: 700;
+}
+
+.contacto-role {
+    margin-bottom: 0.5rem;
+    font-size: clamp(0.85rem, 1.1vw, 0.95rem);
+}
+
+.contacto-link {
+    display: block;
+    color: var(--color-5);
+    font-size: clamp(0.85rem, 1.1vw, 0.95rem);
+    line-height: 1.7;
+    text-decoration: underline;
+    overflow-wrap: anywhere;
+}
+
+.contacto-link:hover {
+    font-weight: 600;
+}
+/* #endregion */
+
+@media (max-width: 991px) {
+    .contacto {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: none;
+    }
+ 
+    .contacto-intro {
+        grid-column: 1;
+        grid-row: auto;
+        order: 1;
+    }
+ 
+    .contacto-form {
+        grid-column: 1;
+        grid-row: auto;
+        order: 2;
+    }
+  
+    .contacto-title {
+        text-align: center;
+    }
+    
+    .contacto-card {
+        width: 100%;
+        max-width: 32rem;
+        margin-inline: auto;
+    }
+
+    .contacto-directora {
+        grid-column: 1;
+        grid-row: auto;
+        order: 3;
+    }
+}
+ 
+@media (max-width: 576px) {
+    .contacto-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+     .contacto-btn {
+        width: 100%;
+    }
+}

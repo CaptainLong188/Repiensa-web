@@ -1,1 +1,83 @@
-<h1>TODO Únete</h1>
+<section class="contacto">
+    <div class="contacto-intro">
+        <h1 class="contacto-title">Contáctanos</h1>
+    
+        <p class="contacto-text">
+            Si deseas contactar con Re-piensa por una propuesta, alianza, consulta o invitación,
+            puedes escribirnos a través de este formulario.
+        </p>
+    </div>
+
+    <form class="contacto-form" id="contacto-form" novalidate>
+        <h2 class="contacto-form-title">Envíanos un Email</h2>
+        <p class="contacto-form-hint">
+            Por favor, completa la información solicitada a continuación. 
+            Los campos marcados con * son obligatorios.
+        </p>
+    
+        <div class="contacto-field">
+            <label class="contacto-label" for="contacto-nombre">Nombre *</label>
+            <input class="contacto-input" id="contacto-nombre" name="nombre" type="text" placeholder="Ingresa tu nombre"
+                autocomplete="name" required>
+        </div>
+    
+        <div class="contacto-field">
+            <label class="contacto-label" for="contacto-correo">Correo *</label>
+            <input class="contacto-input" id="contacto-correo" name="correo" type="email" placeholder="Ingresa tu correo"
+                autocomplete="email" required>
+        </div>
+    
+        <div class="contacto-field">
+            <label class="contacto-label" for="contacto-organizacion">Organización</label>
+            <input class="contacto-input" id="contacto-organizacion" name="organizacion" type="text"
+                placeholder="Ingresa tu organización" autocomplete="organization">
+        </div>
+    
+        <div class="contacto-field">
+            <label class="contacto-label" for="contacto-asunto">Asunto *</label>
+            <input class="contacto-input" id="contacto-asunto" name="asunto" type="text"
+                placeholder="Ingresa el motivo de tu contacto" required>
+        </div>
+    
+        <div class="contacto-field">
+            <label class="contacto-label" for="contacto-mensaje">Mensaje *</label>
+            <textarea class="contacto-textarea" id="contacto-mensaje" name="mensaje" rows="5"
+                placeholder="Cuéntanos cómo podemos ayudarte o comparte los detalles de tu consulta" required></textarea>
+        </div>
+        
+        <!-- Formspree verifica el campo _gotcha, si detecta contenido el envío de esta información se trata como spam -->
+        <div class="contacto-honeypot" aria-hidden="true">
+            <label for="contacto-sitio">No completar este campo</label>
+            <input id="contacto-sitio" name="_gotcha" type="text" tabindex="-1" autocomplete="off">
+        </div>
+    
+        <label class="contacto-consent" for="contacto-consentimiento">
+            <input class="contacto-consent-input" id="contacto-consentimiento" name="consentimiento" type="checkbox"
+                required>
+            <span class="contacto-consent-text">
+                Acepto que Re-piensa use mis datos solo para responder a este mensaje. *
+            </span>
+        </label>
+    
+        <button class="contacto-btn" type="submit">Enviar mensaje</button>
+    
+        <p class="contacto-status" role="status" aria-live="polite"></p>
+    </form>
+
+    <aside class="contacto-directora">
+        <p class="contacto-directora-text">
+            Si buscas coordinar algo más puntual, te invitamos a contactar a nuestra Directora de Alianzas
+        </p>
+
+        <div class="contacto-card">
+            <img src="assets/icons/contact-women.svg" alt="Avatar" class="contacto-avatar" width="96" height="96">
+            <div class="contacto-card-body">
+                <p class="contacto-name">Ximena L. Q.</p>
+                <p class="contacto-role">Directora de Alianzas</p>
+                <a class="contacto-link" href="tel:+51956642840">+51 956 642 840</a>
+                <a class="contacto-link" href="mailto:ximenaquilca2010@gmail.com">ximenaquilca2010@gmail.com</a>
+            </div>
+        </div>
+    </aside>
+
+</section>
