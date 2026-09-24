@@ -60,6 +60,7 @@ DOM.mainMenu.appendChild(fragmentMain)
 
 let currentRoute = null 
 let coverflowResizeHandler = null
+const CONTACTO_ENDPOINT = "https://formspree.io/f/xvkgrynb"
 
 const loadPage = async (route, scrollTargetId = null) => {
     
@@ -78,6 +79,10 @@ const loadPage = async (route, scrollTargetId = null) => {
         else if (route == "pages/alianzas.html")
         {
             initAliadosAnimation()
+        }
+        else if (route == "pages/unete.html")
+        {
+            initContactoForm()
         }
     }
 
@@ -204,6 +209,49 @@ const initAliadosAnimation = () => {
     }, { threshold: 0.2 })
 
     items.forEach((item) => observer.observe(item))
+}
+
+const initContactoForm = () => {
+    const form = document.getElementById("contacto-form")
+    if (!form) return
+
+    const status = form.querySelector(".contacto-status")
+    let sending = false // Previene que el mensaje se mande repetidas veces
+    
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault()
+
+        if (sending) return // Existe un envío de email en progreso
+
+        if (!form.checkValidity()) {
+            form.reportValidity()
+            return
+        }
+
+        sending = true
+        status.textContent = "Enviando ..."
+
+        try {
+            const response = await fetch(CONTACTO_ENDPOINT, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: { Accept: 'application/json' }
+            })
+
+            if (!response.ok) { throw new Error("Envío rechazado")}
+
+            form.reset()
+            status.textContent = 'Gracias, recibimos tu mensaje. Te responderemos pronto.'
+
+        } catch (error) {
+            
+            status.textContent = 'No pudimos enviar tu mensaje. Inténtalo de nuevo en unos minutos.';
+
+        } finally {
+
+            sending = false
+        }
+    })
 }
 
 loadPage("pages/home.html")
