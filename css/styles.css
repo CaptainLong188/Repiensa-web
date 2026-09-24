@@ -110,8 +110,6 @@
         text-transform: uppercase;
     }
 }
-
-
 /* #endregion */
 
 /*-------------- Landing Page --------------*/
@@ -546,7 +544,7 @@
 .footer-site {
     background-color: var(--color-2);
     color: var(--color-1);
-    padding: 3rem 4rem;
+    padding: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 5vw, 4rem);
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -562,15 +560,15 @@
 }
 
 .footer-site .footer-brand .footer-logo {
-    width:  clamp(50px, 20vw, 150px);
+    width: clamp(50px, 20vw, 150px);
     height: auto;
     margin-bottom: 1.5rem;
 }
 
 .footer-site .footer-brand .footer-tagline {
-    font-size: 0.8rem;
+    font-size: clamp(0.8rem, 1vw, 0.9rem);
     line-height: 1.5;
-    letter-spacing: 5%;
+    letter-spacing: 0.04em;
     margin-bottom: 2rem;
 }
 
@@ -579,8 +577,8 @@
     align-items: center;
     gap: 1.5rem;
     margin-bottom: 2rem;
+    font-size: clamp(1.05rem, 1.6vw, 1.2rem);
     font-weight: 500;
-    font-size: 1.2rem;
 }
 
 .footer-site .footer-brand .footer-follow .social-icons {
@@ -598,7 +596,7 @@
     color: var(--color-1);
     padding: 10px 32px;
     border-radius: 6px;
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 1.3vw, 1rem);
     font-weight: 600;
     text-decoration: none;
 }
@@ -607,12 +605,12 @@
     display: grid;
     grid-template-columns: repeat(2, auto);
     grid-template-rows: auto auto;
-    column-gap: 10rem;
+    column-gap: clamp(2.5rem, 8vw, 10rem);
     row-gap: 1.5rem;
 }
 
 .footer-site .footer-links .footer-col h4 {
-    font-size: 1.8rem;
+    font-size: clamp(1.5rem, 2.4vw, 1.8rem);
     font-weight: 700;
     margin: 0 0 1rem;
 }
@@ -630,7 +628,7 @@
 .footer-site .footer-links .footer-col a {
     color: var(--color-1);
     text-decoration: none;
-    font-size: 1rem;
+    font-size: clamp(0.8rem, 1.3vw, 1rem);
     font-weight: 500;
     opacity: 0.90;
 }
@@ -650,14 +648,6 @@
 
     .footer-site .footer-links {
         gap: 2.5rem;
-    }
-
-    .footer-site .footer-links .footer-col h4 {
-        font-size: 1.5rem;
-    }
-
-    .footer-site .footer-links .footer-col a {
-        font-size: 0.8rem;
     }
 }
 
@@ -1668,9 +1658,9 @@
     display: block;
     margin: 0 auto;
     padding: 0.9rem 2.25rem;
-    border: 1px solid black;
+    border: 1px dotted black;
     border-radius: 999px;
-    background-color: #ffffff;
+    background-color: white;
     color: var(--color-2);
     font-family: var(--font-buttons);
     font-size: clamp(1rem, 1.2vw, 1.1rem);
@@ -1768,7 +1758,7 @@
 .unete-text {
     max-width: 42rem;
     margin: 0;
-    font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+    font-size: clamp(1rem, 1.25vw, 1.1rem);
     font-weight: 500;
     line-height: 1.8;
 }
@@ -1782,7 +1772,7 @@
 .unete-note {
     max-width: 46rem;
     margin: clamp(0.5rem, 2vw, 1.5rem) 0 0;
-    font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+    font-size: clamp(1rem, 1.25vw, 1.1rem);
     font-weight: 500;
     line-height: 1.8;
 }
