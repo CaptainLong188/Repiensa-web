@@ -1655,27 +1655,117 @@
 }
 
 .contacto-btn {
-    display: block;
     margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    display: block;
     padding: 0.9rem 2.25rem;
-    border: 1px dotted black;
+    border: none;
     border-radius: 999px;
-    background-color: white;
+    background-color: transparent;
     color: var(--color-2);
     font-family: var(--font-buttons);
     font-size: clamp(1rem, 1.2vw, 1.1rem);
-    font-weight: 600;
-    letter-spacing: 0.04em;
+    font-weight: 700;
     text-transform: uppercase;
+    letter-spacing: 0.04em;
     cursor: pointer;
-    transition: background-color 0.2s ease, color 0.2s ease;
+    transition: color 0.5s;
 }
 
-.contacto-btn:hover {
-    background-color: var(--color-2);
-    color: white;
+/* Borde del botón, dibujado encima de todo */
+.contacto-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--color-2);
+    border-radius: inherit;
+    pointer-events: none;
 }
  
+.contacto-btn:hover, .contacto-btn:focus-visible {
+    color: white; 
+}
+ 
+/* Fondo blanco del botón; recorta las burbujas con la forma de píldora */
+.contacto-btn-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: inherit;
+    background-color: #ffffff;
+}
+ 
+/* Contenedor extra: en Firefox las burbujas rompen el overflow si el filtro va en el inner */
+.contacto-btn-blobs {
+    position: relative;
+    display: block;
+    height: 100%;
+    filter: url('#contacto-goo');
+}
+ 
+.contacto-btn-blob {
+    position: absolute;
+    top: 2px;
+    width: 25%;
+    height: 100%;
+    border-radius: 100%;
+    background-color: var(--color-2);
+    transform: translate3d(0, 150%, 0) scale(1.4);
+    transition: transform 0.45s;
+}
+ 
+.contacto-btn-blob:nth-child(1) {
+    left: 0;
+    transition-delay: 0s;
+}
+ 
+.contacto-btn-blob:nth-child(2) {
+    left: 30%;
+    transition-delay: 0.08s;
+}
+ 
+.contacto-btn-blob:nth-child(3) {
+    left: 60%;
+    transition-delay: 0.16s;
+}
+ 
+.contacto-btn-blob:nth-child(4) {
+    left: 90%;
+    transition-delay: 0.24s;
+}
+ 
+.contacto-btn:hover .contacto-btn-blob,
+.contacto-btn:focus-visible .contacto-btn-blob {
+    transform: translateZ(0) scale(1.4);
+}
+ 
+/* SVG del filtro: ocupa 0 espacio y no se muestra */
+.contacto-goo {
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+
+/* Sin movimiento para quienes prefieren menos animaciones */
+@media (prefers-reduced-motion: reduce) {
+    .contacto-btn {
+        transition: none;
+    }
+
+    .contacto-btn-blob {
+        transition: none;
+    }
+}
+
 .contacto-status {
     min-height: 1.5rem;
     margin: 1rem 0 0;

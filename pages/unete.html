@@ -59,8 +59,18 @@
             </span>
         </label>
     
-        <button class="contacto-btn" type="submit">Enviar mensaje</button>
-    
+        <button class="contacto-btn" type="submit">
+            enviar mensaje
+            <span class="contacto-btn-inner" aria-hidden="true">
+                <span class="contacto-btn-blobs">
+                <span class="contacto-btn-blob"></span>
+                <span class="contacto-btn-blob"></span>
+                <span class="contacto-btn-blob"></span>
+                <span class="contacto-btn-blob"></span>
+                </span>
+            </span>
+        </button>
+        
         <p class="contacto-status" role="status" aria-live="polite"></p>
     </form>
 
@@ -80,6 +90,16 @@
         </div>
     </aside>
 
+    <svg class="contacto-goo" xmlns="http://www.w3.org/2000/svg" version="1.1" aria-hidden="true" focusable="false">
+        <defs>
+        <filter id="contacto-goo">
+            <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10"></feGaussianBlur>
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 21 -7" result="goo"></feColorMatrix>
+            <feBlend in2="goo" in="SourceGraphic" result="mix"></feBlend>
+        </filter>
+        </defs>
+    </svg>
+
 </section>
 
 <section class="unete">
@@ -90,7 +110,7 @@
         en salud mental, psicoeducación y comunidad en Latinoamérica, nos encantará conocerte.
     </p>
 
-    <img class="unete-img" src="/assets/img/shaking-hands-inside-a-heart.svg" alt="Shaking hands inside a heart" width="160" height="152">
+    <img class="unete-img" src="assets/img/shaking-hands-inside-a-heart.svg" alt="Shaking hands inside a heart" width="160" height="152">
 
     <p class="unete-note">
         Las convocatorias se abren por temporadas. Si no hay una activa en este momento,
