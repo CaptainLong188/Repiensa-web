@@ -1360,6 +1360,126 @@
 }
 /* #endregion*/
 
+/*-------------- Recursos --------------*/
+
+/* #region Newsletter */
+
+.newsletter-section {
+    padding: clamp(2rem, 5vw, 4rem) 0;
+}
+
+.newsletter-title {
+    margin-bottom: clamp(0.75rem, 1.5vw, 1.25rem);
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    text-align: center;
+}
+
+.newsletter-intro {
+    max-width: 60ch;
+    margin: 0 auto clamp(1.5rem, 3vw, 2.5rem);
+    font-size: clamp(0.95rem, 1.1vw, 1.1rem);
+    text-align: center;
+}
+
+.newsletter-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(2rem, 3.5vw, 3rem);
+}
+
+.newsletter-message {
+    grid-column: 1 / -1;
+    margin: 0;
+    text-align: center;
+}
+
+.newsletter-card {
+    display: flex;
+    flex-direction: column;
+    padding: clamp(1rem, 2vw, 1.5rem);
+    background-color: var(--color-3);
+    color: black;
+    border-radius: 12px;
+}
+
+.newsletter-icon {
+    align-self: center;
+    width: clamp(6rem, 11vw, 8.5rem);
+    height: auto;
+    margin-bottom: clamp(1rem, 2vw, 1.5rem);
+}
+
+.newsletter-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding-bottom: 0.25rem;
+    border-bottom: 2px solid black;
+    color: black;
+    font-size: clamp(0.8rem, 0.5vw + 0.55rem, 0.95rem);
+    font-weight: 600;
+}
+
+.newsletter-number {
+    margin: 0;
+}
+ 
+.newsletter-date {
+    white-space: nowrap;
+}
+ 
+.newsletter-card-title {
+    margin: clamp(1rem, 1.8vw, 1.5rem) 0;
+    font-size: clamp(0.95rem, 1.1vw, 1.1rem);
+    font-weight: 700;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.newsletter-topics {
+    flex-grow: 1;
+    margin: 0 0 clamp(1rem, 1.5vw, 1.25rem);
+    padding-left: 1.1rem;
+    font-size: clamp(0.8rem, 0.5vw + 0.55rem, 0.9rem);
+    line-height: 1.6;
+    text-align: left;
+}
+ 
+.newsletter-topic {
+    margin-bottom: 0.35rem;
+}
+
+.newsletter-btn {
+    align-self: flex-end;
+    padding: 0.5rem 1.1rem;
+    background-color: var(--color-2);
+    color: white;
+    border-radius: 4px;
+    font-family: var(--font-buttons);
+    font-size: clamp(0.8rem, 0.5vw + 0.55rem, 0.9rem);
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+@media (max-width: 991px) {
+    .newsletter-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+ 
+@media (max-width: 576px) {
+    .newsletter-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+ 
+    .newsletter-icon {
+        width: clamp(6rem, 30vw, 8.5rem);
+    }
+}
+/* #endregion*/
+
 /*-------------- Alianzas --------------*/
 
 /* #region Alianzas */

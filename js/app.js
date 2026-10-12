@@ -60,6 +60,8 @@ DOM.mainMenu.appendChild(fragmentMain)
 
 let currentRoute = null 
 let coverflowResizeHandler = null
+const NEWSLETTERS_DATA_URL = "assets/data/newsletters.json"
+const NEWSLETTER_ICON_URL = "assets/icons/newsletter.svg"
 const CONTACTO_ENDPOINT = "https://formspree.io/f/xvkgrynb"
 
 const loadPage = async (route, scrollTargetId = null) => {
@@ -79,6 +81,10 @@ const loadPage = async (route, scrollTargetId = null) => {
         else if (route == "pages/alianzas.html")
         {
             initAliadosAnimation()
+        }
+        else if (route == "pages/recursos.html")
+        {
+            initNewsletters()
         }
         else if (route == "pages/unete.html")
         {
@@ -188,6 +194,80 @@ const initTalleresCoverflow = () => {
 
     // Aplica el cálculo inicial apenas se carga la sección, antes de cualquier scroll
     update()
+}
+
+const createNewsletterElement = (tag, className, text) => {
+    const element = document.createElement(tag)
+    element.className = className
+    if (text !== undefined) element.textContent = text
+    return element
+}
+
+// "2026-10-06" => "06/10/26"
+const formatNewsletterDate = (isoDate) => {
+    const [year, month, day] = isoDate.split("-")
+    return `${day}/${month}/${year.slice(-2)}` 
+}
+
+const createNewsletterCard = (newsletter) => {
+    const card = createNewsletterElement("article", "newsletter-card")
+    const icon = createNewsletterElement("img", "newsletter-icon")
+    icon.src = NEWSLETTER_ICON_URL
+    icon.alt = ""
+
+    const meta = createNewsletterElement("div", "newsletter-meta")
+    const number = createNewsletterElement("p", "newsletter-number", `Newsletter N°${newsletter.numero}`)
+    const date = createNewsletterElement("time", "newsletter-date", formatNewsletterDate(newsletter.fecha))
+    date.dateTime = newsletter.fecha
+    meta.append(number, date)
+
+    const title = createNewsletterElement("h2", "newsletter-card-title", newsletter.titulo)
+    const topics = createNewsletterElement("ul", "newsletter-topics")
+    newsletter.temas.forEach((topicText) => {
+        topics.append(createNewsletterElement("li", "newsletter-topic", topicText))
+    })
+
+    const button = createNewsletterElement("a", "newsletter-btn", "Leer más")
+    button.href = newsletter.enlace
+    button.target = "_blank"
+    button.rel = "noopener noreferrer"
+    button.setAttribute("aria-label", `Leer más: Newsletter N°${newsletter.numero}, ${newsletter.titulo}`)
+
+    card.append(icon, meta, title, topics, button)
+    return card
+}
+
+const showNewsletterMessage = (grid, text) => {
+    grid.replaceChildren(createNewsletterElement("p", "newsletter-message", text))
+}
+
+const initNewsletters = async () => {
+    const grid = DOM.mainContent.querySelector(".newsletter-grid") 
+    if (!grid) return
+
+    try 
+    {
+        const response = await fetch(NEWSLETTERS_DATA_URL)
+        if (!response.ok) throw new Error(`HTTP ${response.status}`)
+
+        const newsletters = await response.json()
+        if (!Array.isArray(newsletters) || !newsletters.length)
+        {
+            showNewsletterMessage(grid, "Todavía no hay newsletters publicados.")
+            return
+        }
+
+        const cards = document.createDocumentFragment()
+        newsletters.forEach((newsletter) => {
+            cards.append(createNewsletterCard(newsletter))
+        })
+        grid.replaceChildren(cards)
+    } 
+    catch (err) 
+    {
+        console.error("Error al cargar los newsletters:", err)
+        showNewsletterMessage(grid, "No pudimos cargar los newsletters. Intenta de nuevo más tarde.")
+    }
 }
 
 const initAliadosAnimation = () => {
