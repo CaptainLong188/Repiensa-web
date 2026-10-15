@@ -262,12 +262,41 @@ const initNewsletters = async () => {
             cards.append(createNewsletterCard(newsletter))
         })
         grid.replaceChildren(cards)
+        initNewsletterLoadMore()
     } 
     catch (err) 
     {
         console.error("Error al cargar los newsletters:", err)
         showNewsletterMessage(grid, "No pudimos cargar los newsletters. Intenta de nuevo más tarde.")
     }
+}
+
+const initNewsletterLoadMore = () => {
+    const grid = DOM.mainContent.querySelector(".newsletter-grid")
+    const btn = DOM.mainContent.querySelector(".newsletter-more-btn")
+    if (!grid || !btn) return
+
+    const step = 12 // Cada paso revela 12 cards
+    let visible = step // Cuantos cards actualmente se muestran
+
+    const update = () => {
+        const cards = grid.querySelectorAll(".newsletter-card")
+
+        // Ocultar todas las cartas cuya posición sobrepasa el contador
+        cards.forEach((card, i) => {
+            card.classList.toggle("newsletter-card-hidden", i >= visible)
+        })
+        
+        // Oculta el boton una vez no haya mas cards que mostrar
+        btn.parentElement.hidden = visible >= cards.length
+    }
+
+    btn.addEventListener("click", () => {
+        visible += step
+        update()
+    })
+
+    update()
 }
 
 const initAliadosAnimation = () => {
