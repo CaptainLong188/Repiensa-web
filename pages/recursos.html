@@ -1,15 +1,28 @@
 <section class="newsletter-section">
     <div class="container">
-        <h1 class="newsletter-title">Newsletter</h1>
-        <p class="newsletter-intro">
-            Aquí encontrarás todas nuestras ediciones. Haz clic en «Leer más» para abrir el documento.
-        </p>
+
+        <div class="recursos-header">
+            <h1 class="recursos-title">Artículos y materiales para aprender más sobre salud mental.</h1>
+            <div class="recursos-filters" role="group" aria-label="Filtrar recursos por categoría">
+                <button type="button" class="recursos-filter" data-filter="todo" aria-pressed="true">Todo</button>
+                <button type="button" class="recursos-filter" data-filter="materiales" aria-pressed="false">Materiales psicoeducativos</button>
+                <button type="button" class="recursos-filter" data-filter="articulos" aria-pressed="false">Artículos</button>
+                <button type="button" class="recursos-filter" data-filter="newsletter" aria-pressed="false">Ediciones pasadas newsletter</button>
+            </div>
+        </div>
+
         <div class="newsletter-grid">
             <!-- Los cards serán renderizados usando JS -->
         </div>
-        <div class="newsletter-more">
+
+        <div class="newsletter-empty" hidden>
+            <img class="newsletter-empty-img" src="/assets/img/sin-informacion.svg"
+                alt="Aún no hay información en esta sección">
+        </div>
+
+        <div class="newsletter-more" hidden>
             <button type="button" class="newsletter-more-btn">Cargar más</button>
         </div>
+
     </div>
 </section>
- 

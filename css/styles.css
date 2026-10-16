@@ -1362,23 +1362,63 @@
 
 /*-------------- Recursos --------------*/
 
-/* #region Newsletter */
-
+/* #region Material Re-Piensa */
 .newsletter-section {
     padding: clamp(2rem, 5vw, 4rem) 0;
 }
 
-.newsletter-title {
-    margin-bottom: clamp(0.75rem, 1.5vw, 1.25rem);
-    font-size: clamp(1.75rem, 3vw, 2.5rem);
+.recursos-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(1.25rem, 2.5vw, 2rem);
+    margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
     text-align: center;
 }
 
-.newsletter-intro {
-    max-width: 60ch;
-    margin: 0 auto clamp(1.5rem, 3vw, 2.5rem);
-    font-size: clamp(0.95rem, 1.1vw, 1.1rem);
-    text-align: center;
+.recursos-title {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--color-2);
+    font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+    letter-spacing: 0.02em;
+    margin: 0 0 1rem;
+}
+
+.recursos-filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem clamp(1.5rem, 4vw, 3.5rem);
+}
+
+.recursos-filters .recursos-filter {
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background: none;
+    color: black;
+    opacity: 1;
+    font-family: var(--font-buttons);
+    font-size: clamp(0.875rem, 1.3vw, 1.125rem);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    line-height: 1.4;
+    text-transform: uppercase;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.recursos-filters .recursos-filter::before {
+    content: "[ ";
+}
+
+.recursos-filters .recursos-filter::after {
+    content: " ]";
+}
+
+.recursos-filters .recursos-filter:focus {
+    outline: none;
 }
 
 .newsletter-grid {
@@ -1400,6 +1440,10 @@
     background-color: var(--color-3);
     color: black;
     border-radius: 12px;
+}
+
+.newsletter-card.newsletter-card-hidden {
+    display: none;
 }
 
 .newsletter-icon {
@@ -1424,11 +1468,11 @@
 .newsletter-number {
     margin: 0;
 }
- 
+
 .newsletter-date {
     white-space: nowrap;
 }
- 
+
 .newsletter-card-title {
     margin: clamp(1rem, 1.8vw, 1.5rem) 0;
     font-size: clamp(0.95rem, 1.1vw, 1.1rem);
@@ -1445,7 +1489,7 @@
     line-height: 1.6;
     text-align: left;
 }
- 
+
 .newsletter-topic {
     margin-bottom: 0.35rem;
 }
@@ -1463,73 +1507,91 @@
     transition: background-color 0.2s ease;
 }
 
+.newsletter-empty {
+    display: flex;
+    justify-content: center;
+    padding: clamp(1.5rem, 5vw, 4rem) 0;
+}
+
+.newsletter-empty[hidden] {
+    display: none;
+}
+
+.newsletter-empty-img {
+    width: 100%;
+    max-width: clamp(15rem, 40vw, 26rem);
+    height: auto;
+}
+
+.newsletter-more {
+    display: flex;
+    justify-content: center;
+    margin-top: clamp(1.5rem, 4vw, 3rem);
+}
+
+.newsletter-more[hidden] {
+    display: none;
+}
+
+.newsletter-more-btn {
+    padding: clamp(0.625rem, 1.2vw, 0.875rem) clamp(1.75rem, 3vw, 2.75rem);
+    border: 2px solid var(--color-2);
+    border-radius: 50px;
+    background: transparent;
+    color: var(--color-2);
+    font-family: var(--font-buttons);
+    font-size: clamp(1rem, 1.2vw, 1.125rem);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.newsletter-more-btn:hover {
+    background: var(--color-2);
+    color: #fff;
+}
+
+.newsletter-more-btn:focus-visible {
+    outline: 3px solid var(--color-2);
+    outline-offset: 3px;
+}
+
 @media (max-width: 991px) {
+    .recursos-filters {
+        gap: 0.625rem 1.5rem;
+    }
+
+    .recursos-filters .recursos-filter {
+        font-size: 0.8125rem;
+        white-space: normal;
+    }
+
     .newsletter-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+
+    .newsletter-more {
+        margin-top: clamp(1.25rem, 5vw, 2rem);
+    }
+
+    .newsletter-more-btn {
+        width: 100%;
+        max-width: 20rem;
+    }
 }
- 
+
 @media (max-width: 576px) {
     .newsletter-grid {
         grid-template-columns: minmax(0, 1fr);
     }
- 
+
     .newsletter-icon {
         width: clamp(6rem, 30vw, 8.5rem);
     }
 }
-
-.newsletter-card.newsletter-card-hidden {
-  display: none;
-}
-
-.newsletter-more {
-  display: flex;
-  justify-content: center;
-  margin-top: clamp(24px, 4vw, 48px);
-}
-
-.newsletter-more[hidden] {
-  display: none;
-}
-
-.newsletter-more-btn {
-  padding: clamp(10px, 1.2vw, 14px) clamp(28px, 3vw, 44px);
-  border: 2px solid var(--color-2);
-  border-radius: 50px;
-  background: transparent;
-  color: var(--color-2);
-  font-family: var(--font-buttons);
-  font-size: clamp(16px, 1.2vw, 18px);
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: background 0.3s ease;
-  transition: color 0.3s ease;
-}
-
-.newsletter-more-btn:hover {
-  background: var(--color-2);
-  color: #fff;
-}
-
-.newsletter-more-btn:focus-visible {
-  outline: 3px solid var(--color-2);
-  outline-offset: 3px;
-}
-
-@media (max-width: 991px) {
-  .newsletter-more {
-    margin-top: clamp(20px, 5vw, 32px);
-  }
-
-  .newsletter-more-btn {
-    width: 100%;
-    max-width: 320px;
-  }
-}
-/* #endregion*/
+/* #endregion */
 
 /*-------------- Alianzas --------------*/
 

@@ -220,6 +220,9 @@ const formatNewsletterDate = (isoDate) => {
 
 const createNewsletterCard = (newsletter) => {
     const card = createNewsletterElement("article", "newsletter-card")
+    // Categoría para el filtro; por ahora todas son newsletters
+    card.dataset.category = newsletter.categoria || "newsletter"
+
     const icon = createNewsletterElement("img", "newsletter-icon")
     icon.src = NEWSLETTER_ICON_URL
     icon.alt = ""
@@ -271,7 +274,9 @@ const initNewsletters = async () => {
             cards.append(createNewsletterCard(newsletter))
         })
         grid.replaceChildren(cards)
-        initNewsletterLoadMore()
+
+        // Las cards ya están en el DOM, ahora se activan los filtros y "Cargar más"
+        initNewsletterFilters()
     } 
     catch (err) 
     {
@@ -280,27 +285,54 @@ const initNewsletters = async () => {
     }
 }
 
-const initNewsletterLoadMore = () => {
+const initNewsletterFilters = () => {
     const grid = DOM.mainContent.querySelector(".newsletter-grid")
-    const btn = DOM.mainContent.querySelector(".newsletter-more-btn")
-    if (!grid || !btn) return
+    const filters = DOM.mainContent.querySelectorAll(".recursos-filter")
+    const emptyState = DOM.mainContent.querySelector(".newsletter-empty")
+    const moreBox = DOM.mainContent.querySelector(".newsletter-more")
+    const moreBtn = DOM.mainContent.querySelector(".newsletter-more-btn")
+    if (!grid || !filters.length || !emptyState || !moreBox || !moreBtn) return
 
-    const step = 12 // Cada paso revela 12 cards
-    let visible = step // Cuantos cards actualmente se muestran
+    const step = 12 // Cada paso revela 12 cards (4 filas de 3)
+    let visible = step // Cuántas cards se muestran del filtro actual
+    let activeFilter = "todo"
 
     const update = () => {
-        const cards = grid.querySelectorAll(".newsletter-card")
+        const cards = Array.from(grid.querySelectorAll(".newsletter-card"))
 
-        // Ocultar todas las cartas cuya posición sobrepasa el contador
-        cards.forEach((card, i) => {
-            card.classList.toggle("newsletter-card-hidden", i >= visible)
+        // Cards que pertenecen al filtro activo ("todo" las incluye todas)
+        const matching = cards.filter((card) => {
+            return activeFilter === "todo" || card.dataset.category === activeFilter
         })
-        
-        // Oculta el boton una vez no haya mas cards que mostrar
-        btn.parentElement.hidden = visible >= cards.length
+
+        // Ocultar las que no coinciden y las que sobrepasan el contador
+        cards.forEach((card) => {
+            const index = matching.indexOf(card)
+            card.classList.toggle("newsletter-card-hidden", index === -1 || index >= visible)
+        })
+
+        // Sin cards en este filtro: mostrar la imagen de "aún no hay información"
+        emptyState.hidden = matching.length > 0
+
+        // Ocultar "Cargar más" cuando no hay más cards que mostrar
+        moreBox.hidden = visible >= matching.length
     }
 
-    btn.addEventListener("click", () => {
+    filters.forEach((filter) => {
+        filter.addEventListener("click", () => {
+            activeFilter = filter.dataset.filter
+            visible = step // Al cambiar de filtro se vuelve a empezar en 12
+
+            // Solo informa a lectores de pantalla cuál filtro está seleccionado
+            filters.forEach((other) => {
+                other.setAttribute("aria-pressed", String(other === filter))
+            })
+
+            update()
+        })
+    })
+
+    moreBtn.addEventListener("click", () => {
         visible += step
         update()
     })
