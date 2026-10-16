@@ -66,6 +66,9 @@ const CONTACTO_ENDPOINT = "https://formspree.io/f/xvkgrynb"
 
 const loadPage = async (route, scrollTargetId = null) => {
     
+    // Cerrar el menú móvil si está abierto, sin importar desde dónde se navegó
+    closeNavbar()
+    
     // Solo volver a solicitar el HTML si es una página distinta a la actual
     if (route != currentRoute)
     {
@@ -105,6 +108,12 @@ const loadPage = async (route, scrollTargetId = null) => {
     {
         window.scrollTo({top: 0}) // Comportamiento normal: subir al inicio en navegación regular
     }
+}
+
+const closeNavbar = () => {
+    const navbarCollapse = DOM.mainMenu.closest(".navbar-collapse")
+    if (!navbarCollapse || !navbarCollapse.classList.contains("show")) return
+    bootstrap.Collapse.getOrCreateInstance(navbarCollapse, {toggle: false}).hide()
 }
 
 const initTalleresCoverflow = () => {
