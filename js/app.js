@@ -64,7 +64,7 @@ const NEWSLETTERS_DATA_URL = "assets/data/newsletters.json"
 const NEWSLETTER_ICON_URL = "assets/icons/newsletter.svg"
 const CONTACTO_ENDPOINT = "https://formspree.io/f/xvkgrynb"
 
-const loadPage = async (route, scrollTargetId = null) => {
+const loadPage = async (route, scrollTargetId = null, filter = null) => {
     
     // Cerrar el menú móvil si está abierto, sin importar desde dónde se navegó
     closeNavbar()
@@ -87,12 +87,16 @@ const loadPage = async (route, scrollTargetId = null) => {
         }
         else if (route == "pages/recursos.html")
         {
-            initNewsletters()
+            initNewsletters(filter)
         }
         else if (route == "pages/unete.html")
         {
             initContactoForm()
         }
+    }
+    else if (route == "pages/recursos.html" && filter)
+    {
+        applyRecursosFilter(filter)
     }
 
     if (scrollTargetId) 
@@ -253,7 +257,7 @@ const showNewsletterMessage = (grid, text) => {
     grid.replaceChildren(createNewsletterElement("p", "newsletter-message", text))
 }
 
-const initNewsletters = async () => {
+const initNewsletters = async (initialFilter = null) => {
     const grid = DOM.mainContent.querySelector(".newsletter-grid") 
     if (!grid) return
 
@@ -276,7 +280,7 @@ const initNewsletters = async () => {
         grid.replaceChildren(cards)
 
         // Las cards ya están en el DOM, ahora se activan los filtros y "Cargar más"
-        initNewsletterFilters()
+        initNewsletterFilters(initialFilter)
     } 
     catch (err) 
     {
@@ -285,7 +289,7 @@ const initNewsletters = async () => {
     }
 }
 
-const initNewsletterFilters = () => {
+const initNewsletterFilters = (initialFilter = null) => {
     const grid = DOM.mainContent.querySelector(".newsletter-grid")
     const filters = DOM.mainContent.querySelectorAll(".recursos-filter")
     const emptyState = DOM.mainContent.querySelector(".newsletter-empty")
@@ -337,7 +341,25 @@ const initNewsletterFilters = () => {
         update()
     })
 
-    update()
+    // Si se llegó desde el footer, se activa ese filtro; si no, se muestra todo
+    const initialButton = initialFilter
+        ? DOM.mainContent.querySelector(`.recursos-filter[data-filter="${initialFilter}"]`)
+        : null
+
+    if (initialButton)
+    {
+        initialButton.click()
+    }
+    else
+    {
+        update()
+    }
+}
+
+const applyRecursosFilter = (filter) => {
+    const button = DOM.mainContent.querySelector(`.recursos-filter[data-filter="${filter}"]`)
+    if (!button) return
+    button.click()
 }
 
 const initAliadosAnimation = () => {
@@ -435,10 +457,11 @@ DOM.mainContent.addEventListener("click", (event) => {
 })
 
 document.querySelectorAll(".footer-anchor-link").forEach(link => {
-    link.addEventListener("click", (event) => {
-        event.preventDefault()
+    link.addEventListener("click", (e) => {
+        e.preventDefault()
         const route = link.getAttribute("data-route")
         const target = link.getAttribute("data-target")
-        loadPage(route, target)
+        const filter = link.getAttribute("data-filter")
+        loadPage(route, target, filter)
     })
 })
