@@ -868,11 +868,39 @@
     box-shadow: 0 10px 30px rgba(0,0,0,0.25)
 }
 
+.fundadora-section .fundadora-linkedin {
+    align-self: flex-start;
+    display: inline-flex;
+    width: clamp(1.75rem, 3vw, 2.25rem);
+    height: clamp(1.75rem, 3vw, 2.25rem);
+    transition: transform 0.2s ease;
+}
+
+.fundadora-section .fundadora-linkedin:hover {
+    transform: scale(1.1);
+}
+
+.fundadora-section .fundadora-linkedin:focus-visible {
+    outline: 2px solid var(--color-1);
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+.fundadora-linkedin-icon {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
 @media (max-width: 991px) {
 
     .fundadora-section {
         flex-direction: column;
         text-align: center;
+    }
+    
+    .fundadora-section .fundadora-linkedin {
+        align-self: center;
     }
 
     .fundadora-photo {
@@ -1162,10 +1190,9 @@
     column-gap: clamp(1.5rem, 4vw, 3rem);
     row-gap: 1.5rem;
     grid-template-areas:
-    "title    ."
-    "desc     subtitle"
-    ".        recibe"
-    "icon     list";
+        "title    ."
+        "desc     subtitle"
+        "icon     list";
 }
 
 .checkin-mental .checkin-title {
@@ -1190,14 +1217,6 @@
     text-align: center;
 }
 
-.checkin-mental .checkin-icon {
-    grid-area: icon;
-    width: clamp(7rem, 14vw, 9.5rem);
-    height: auto;
-    margin: 0 auto;
-    align-self: center;
-}
-
 .checkin-mental .checkin-subtitle {
     grid-area: subtitle;
     color: var(--color-5);
@@ -1212,12 +1231,36 @@
     text-underline-offset: 4px;
 }
 
+.checkin-mental .checkin-link {
+    grid-area: icon;
+    justify-self: center;
+    align-self: center;
+    display: block;
+    width: clamp(7rem, 14vw, 9.5rem);
+    transition: transform 0.2s ease;
+}
+
+.checkin-mental .checkin-link:hover {
+    transform: scale(1.08);
+}
+
+.checkin-mental .checkin-link:focus-visible {
+    outline: 2px solid var(--color-5);
+    outline-offset: 6px;
+    border-radius: 12px;
+}
+
+.checkin-mental .checkin-icon {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
 .checkin-mental .checkin-list-wrap {
     grid-area: list;
 }
 
 .checkin-mental .checkin-label {
-    grid-area: recibe;
     font-weight: 600;
     font-size: clamp(0.95rem, 1.4vw, 1.05rem);
     text-align: left;
@@ -1261,7 +1304,6 @@
             "desc"
             "subtitle"
             "icon"
-            "recibe"
             "list";
     }
 
@@ -1327,13 +1369,31 @@
     text-align: center;
 }
 
-.instagram-psico .instagram-icon {
+.instagram-psico .instagram-link {
     grid-area: icon;
-    width: clamp(7rem, 14vw, 9.5rem);
-    height: auto;
-    margin: 0 auto;
+    justify-self: center;
     align-self: center;
+    display: block;
+    width: clamp(7rem, 14vw, 9.5rem);
+    transition: transform 0.2s ease;
 }
+
+.instagram-psico .instagram-link:hover {
+    transform: scale(1.08);
+}
+
+.instagram-psico .instagram-link:focus-visible {
+    outline: 2px solid var(--color-5);
+    outline-offset: 6px;
+    border-radius: 12px;
+}
+
+.instagram-psico .instagram-icon {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
 .instagram-psico .instagram-cta {
     grid-area: cta;
     color: var(--color-5);
