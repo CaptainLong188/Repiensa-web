@@ -14,6 +14,13 @@
     --font-footer: 'League Spartan', sans-serif;
     --font-partner: 'Merriweather', sans-serif;
     --font-form: 'Merriweather', sans-serif;
+
+    /*-----Font sizes-----*/
+    --fs-section-title: clamp(1.5rem, 3vw, 2.2rem);
+    --fs-card-title: clamp(1.4rem, 2vw, 1.5rem);
+    --fs-body: clamp(0.95rem, 1.4vw, 1.1rem);
+    --fs-subtitle: clamp(1rem, 1.6vw, 1.15rem);
+    --fs-button: clamp(1rem, 1.2vw, 1.1rem);
 }
 
 #main-content {
@@ -150,16 +157,16 @@
     font-weight: 800;
     text-transform: uppercase;
     line-height: 1.5;
-    letter-spacing: 4%;
+    letter-spacing: 0.04em;
     margin-bottom: 3rem;
 }
 
 #hero-section .hero-content .hero-description {
     font-family: var(--font-text);
     color: var(--color-5);
-    font-size: 1.1rem;
+    font-size: clamp(0.95rem, 1.4vw, 1.15rem);
     line-height: 1.6;
-    letter-spacing: 4%;
+    letter-spacing: 0.04em;
     margin-bottom: 2rem;
 }
 
@@ -176,9 +183,9 @@
     border-radius: 50px;
     border: 2px solid var(--color-5);
     font-family: var(--font-buttons);
-    font-size: 1rem;
+    font-size: var(--fs-button);
     font-weight: 700;
-    letter-spacing: 10%;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     transition: all 1s ease;
 }
@@ -220,7 +227,6 @@
     #hero-section .hero-content .hero-description {
         grid-row: 2;
         margin-bottom: 2rem;
-        font-size: 0.8rem;
     }
 
     #hero-section .hero-image img{
@@ -239,7 +245,6 @@
 
     #hero-section .hero-content .hero-buttons .btn {
         padding: 0.75rem 1.5rem;
-        font-size: 0.8rem;
     }
 }
 /* #endregion */
@@ -255,7 +260,7 @@
 
 #about-us-section .about-us-title {
     font-family: var(--font-heading);
-    font-size: 2.2rem;
+    font-size: var(--fs-section-title);
     font-weight: 700;
     color: var(--color-2);
     text-transform: uppercase;
@@ -297,12 +302,12 @@
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 
-    text-align: left;
+    text-align: justify;
     font-family: var(--font-text);
-    font-size: 1.1rem;
+    font-size: clamp(0.1rem, 1.4vw, 1.2rem);
     font-weight: 400;
     color: var(--color-1);
-    letter-spacing: 10%;
+    letter-spacing: 0.1em;
     line-height: 2;
 }
 
@@ -312,8 +317,9 @@
 
 #about-us-section #join-btn {
     font-family: var(--font-buttons);
+    font-size: var(--fs-button);
     font-weight: 700;
-    letter-spacing: 10%;
+    letter-spacing: 0.1em;
     color: var(--color-2);
     padding: 0.88rem 2.5rem;
     border-radius: 50px;
@@ -331,7 +337,6 @@
 
     #about-us-section .about-us-title {
         margin-bottom: 2rem;
-        font-size: 1.5rem;
     }
  
     #about-us-section .about-us-content {
@@ -342,7 +347,6 @@
         order: -1;
         padding: 1.5rem 1.5rem;
         text-align: center;
-        font-size: 0.8rem;
         border-radius: 50px;
     }
 
@@ -381,7 +385,7 @@
     height: 80px;
     color: var(--color-1);
     font-family: var(--font-heading);
-    font-size: x-large;
+    font-size: var(--fs-card-title);
     font-weight: bolder;
     text-transform: uppercase;
     display: flex;
@@ -397,6 +401,7 @@
 
 #project-section .project-description {
     font-family: var(--font-text);
+    font-size: var(--fs-body);
     text-align: center;
     padding: 15px;
     letter-spacing: 0.04em;
@@ -437,10 +442,6 @@
         gap: 2rem;
     }
 
-    #project-section .project-section-title {
-        font-size: 1.4rem;
-    }
-
     #project-section .project {
         margin: 0;
         width: 75%;
@@ -450,11 +451,6 @@
     #project-section .project img {
         height: 150px;
     }
-
-    #project-section .project-description {
-        font-size: 0.8rem;
-    }
-
 }
 /* #endregion */
 
@@ -468,7 +464,7 @@
 
 #newsletter-section .newsletter-section-title {
     font-family: var(--font-heading);
-    font-size: 2.2rem;
+    font-size: var(--fs-section-title);
     font-weight: 700;
     color: var(--color-2);
     text-transform: uppercase;
@@ -482,17 +478,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 85%;
+    width: 80%;
     border-radius: 50px;
     margin-bottom: 1rem;
 }
 
 #newsletter-section .newsletter-section-message p {
     font-family: var(--font-text);
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: clamp(0.95rem, 1.4vw, 1.0rem);
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 10%;
+    letter-spacing: 0.1em;
     margin-bottom: 0;
 }
 
@@ -502,8 +498,9 @@
 
 #newsletter-section a {
     font-family: var(--font-buttons);
+    font-size: var(--fs-button);
     font-weight: 700;
-    letter-spacing: 10%;
+    letter-spacing: 0.1em;
     color: var(--color-2);
     padding: 0.88rem 2.5rem;
     border-radius: 50px;
@@ -520,14 +517,12 @@
     }
 
     #newsletter-section .newsletter-section-title {
-        font-size: 1.5rem;
         margin-bottom: 2rem;
         padding-inline: 1rem;
     }
 
     #newsletter-section .newsletter-section-message p {
-        padding: 0.4 rem;
-        font-size: 0.8rem;
+        padding: 0.4rem;
         font-weight: 500;
         text-transform: none;
     }
@@ -566,7 +561,7 @@
 }
 
 .footer-site .footer-brand .footer-tagline {
-    font-size: clamp(0.8rem, 1vw, 0.9rem);
+    font-size: clamp(0.8rem, 1vw, 0.95rem);
     line-height: 1.5;
     letter-spacing: 0.04em;
     margin-bottom: 2rem;
@@ -681,7 +676,7 @@
     font-family: var(--font-heading);
     font-size: clamp(1.5rem, 5vw, 5rem);
     font-weight: 600;
-    letter-spacing: 2%;
+    letter-spacing: 0.02em;
     text-transform: uppercase;
     text-align: center;
     color: white;
@@ -865,7 +860,7 @@
     object-fit: cover;
     border-radius: 20px;
     display: block;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.25)
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
 }
 
 .fundadora-section .fundadora-linkedin {
