@@ -991,7 +991,7 @@
 
 /* #region ciclo-repiensa section */
 .ciclo-repiensa {
-    padding: clamp(2rem, 5vw, 3.5rem) clamp(1.25rem, 5vw, 3rem);
+    padding: clamp(3rem, 8vw, 6em) clamp(1.25rem, 5vw, 3rem);
 }
 
 .ciclo-repiensa .ciclo-inner {
@@ -1052,6 +1052,7 @@
     font-size: clamp(0.90rem, 1.4vw, 1rem);
     line-height: 1.4;
 }
+
 @media (max-width: 991px) {
     .ciclo-repiensa .ciclo-inner {
         grid-template-columns: 1fr;
@@ -1072,6 +1073,112 @@
         width: auto;
         margin: 0;
     }
+}
+/*  #endregion */
+
+/* # region impacto-strip section */
+
+.impacto-strip {
+    background-color: var(--color-2);
+    color: var(--color-1);
+    padding: clamp(2.5rem, 5vw, 4rem) clamp(1.25rem, 4vw, 3rem);
+    text-align: center;
+}
+
+.impacto-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.5rem, 2.6vw, 2.25rem);
+    font-weight: 700;
+    margin: 0 0 clamp(1.75rem, 4vw, 3rem);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+.impacto-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.impacto-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.25rem clamp(1rem, 3vw, 2.5rem);
+    border-left: 2px solid #c0a4ca;
+}
+
+.impacto-item:first-child {
+    border-left: none;
+}
+
+.impacto-item-destacado {
+    color: #f1ece4;
+}
+
+.impacto-icon {
+  width: 3rem;
+    height: 3rem;
+    margin-bottom: 0.75rem;
+    fill: none;
+    stroke: #c0a4ca;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.impacto-number {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    height: clamp(3.75rem, 8vw, 5.5rem);
+    font-family: var(--font-serif);
+    font-size: clamp(3rem, 6vw, 4.5rem);
+    line-height: 1;
+}
+
+.impacto-item-destacado .impacto-number {
+    font-size: clamp(3.75rem, 8vw, 5.5rem);
+}
+
+.impacto-value {
+  font-variant-numeric: tabular-nums;
+}
+
+.impacto-sign {
+  font-size: 0.5em;
+  line-height: 1;
+  margin-bottom: 0.06em;
+}
+
+.impacto-plus {
+  align-self: flex-start;
+  margin: 0.12em 2px 0 0;
+}
+
+.impacto-label {
+  font-size: 1.1rem;
+  font-family: var(--font-text);
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+  max-width: 200px;
+  margin: 0.75rem 0 0;
+}
+
+.impacto-closing {
+  font-family: var(--font-text);
+  font-style: italic;
+  font-size: clamp(1.1rem, 1.6vw, 1.2rem);
+  line-height: 1.5;
+  max-width: 480px;
+  margin: 2rem auto 0;
+}
+
+.impacto-source {
+  font-size: 0.75rem;
+  color: #c0a4ca;
+  margin: 0.9rem 0 0;
 }
 /*  #endregion */
 
