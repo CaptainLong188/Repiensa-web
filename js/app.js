@@ -80,6 +80,7 @@ const loadPage = async (route, scrollTargetId = null, filter = null) => {
         if (route == "pages/proyectos.html")
         {
             initTalleresCoverflow()
+            initImpactoCount()
         }
         else if (route == "pages/alianzas.html")
         {
@@ -118,6 +119,89 @@ const closeNavbar = () => {
     const navbarCollapse = DOM.mainMenu.closest(".navbar-collapse")
     if (!navbarCollapse || !navbarCollapse.classList.contains("show")) return
     bootstrap.Collapse.getOrCreateInstance(navbarCollapse, {toggle: false}).hide()
+}
+
+// const initImpactoCount = () => {
+//   const strip = DOM.mainContent.querySelector(".impacto-strip")
+//   const values = DOM.mainContent.querySelectorAll(".impacto-value")
+//   if (!strip || !values.length) return
+//   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
+
+//   const duration = 1000
+
+//   const animate = (el) => {
+//     const target = Number(el.dataset.count)
+//     const start = performance.now()
+//     const step = (now) => {
+//       const progress = Math.min((now - start) / duration, 1)
+//       const eased = 1 - Math.pow(1 - progress, 3)
+//       el.textContent = Math.round(target * eased)
+//       if (progress < 1) requestAnimationFrame(step)
+//     }
+//     requestAnimationFrame(step)
+//   }
+
+//   values.forEach((el) => {
+//     el.textContent = "0"
+//   })
+
+//   const observer = new IntersectionObserver((entries, obs) => {
+//     entries.forEach((entry) => {
+//       if (!entry.isIntersecting) return
+//       values.forEach(animate)
+//       obs.unobserve(entry.target)
+//     })
+//   }, { threshold: 0.4 })
+
+//   observer.observe(strip)
+// }
+
+const initImpactoCount = () => {
+    const strip = DOM.mainContent.querySelector(".impacto-strip")
+    const values = DOM.mainContent.querySelectorAll(".impacto-value")
+    if (!strip || !values.length) return
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
+
+    const duration = 1000
+    const frameIds = new Map() // Guarda el frame pendiente de cada cifra para poder cancelarlo
+    let counting = false // true desde que arranca el conteo hasta que la franja sale por completo
+
+    const animate = (el) => {
+        const target = Number(el.dataset.count)
+        const start = performance.now()
+        const step = (now) => {
+            const progress = Math.min((now - start) / duration, 1)
+            const eased = 1 - Math.pow(1 - progress, 3)
+            el.textContent = Math.round(target * eased)
+            if (progress < 1) frameIds.set(el, requestAnimationFrame(step))
+        }
+        frameIds.set(el, requestAnimationFrame(step))
+    }
+
+    const reset = () => {
+        frameIds.forEach((id) => cancelAnimationFrame(id))
+        frameIds.clear()
+        values.forEach((el) => {
+            el.textContent = "0"
+        })
+        counting = false
+    }
+
+    reset()
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) {
+                reset()
+                return
+            }
+            if (counting || entry.intersectionRatio < 0.4) return
+            counting = true
+            values.forEach(animate)
+        })
+    }, { threshold: [0, 0.4] })
+
+    observer.observe(strip)
 }
 
 const initTalleresCoverflow = () => {
