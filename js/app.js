@@ -60,8 +60,9 @@ DOM.mainMenu.appendChild(fragmentMain)
 
 let currentRoute = null 
 let coverflowResizeHandler = null
-const NEWSLETTERS_DATA_URL = "assets/data/newsletters.json"
+const RECURSOS_DATA_URL = "assets/data/recursos.json"
 const NEWSLETTER_ICON_URL = "assets/icons/newsletter.svg"
+const ARTICLE_ICON_URL = "assets/icons/article.svg"
 const CONTACTO_ENDPOINT = "https://formspree.io/f/xvkgrynb"
 
 const loadPage = async (route, scrollTargetId = null, filter = null) => {
@@ -88,7 +89,7 @@ const loadPage = async (route, scrollTargetId = null, filter = null) => {
         }
         else if (route == "pages/recursos.html")
         {
-            initNewsletters(filter)
+            initRecursos(filter)
         }
         else if (route == "pages/unete.html")
         {
@@ -293,7 +294,7 @@ const initTalleresCoverflow = () => {
     update()
 }
 
-const createNewsletterElement = (tag, className, text) => {
+const createRecursoElement = (tag, className, text) => {
     const element = document.createElement(tag)
     element.className = className
     if (text !== undefined) element.textContent = text
@@ -301,79 +302,113 @@ const createNewsletterElement = (tag, className, text) => {
 }
 
 // "2026-10-06" => "06/10/26"
-const formatNewsletterDate = (isoDate) => {
+const formatRecursoDate = (isoDate) => {
     const [year, month, day] = isoDate.split("-")
     return `${day}/${month}/${year.slice(-2)}` 
 }
 
-const createNewsletterCard = (newsletter) => {
-    const card = createNewsletterElement("article", "newsletter-card")
-    // Categoría para el filtro; por ahora todas son newsletters
-    card.dataset.category = newsletter.categoria || "newsletter"
+// Una fecha inválida ("xxxx-xx-xx") cuenta como la más antigua
+const getRecursoTime = (item) => {
+    const time = Date.parse(item.fecha)
+    return Number.isNaN(time) ? 0 : time
+}
 
-    const icon = createNewsletterElement("img", "newsletter-icon")
-    icon.src = NEWSLETTER_ICON_URL
-    icon.alt = ""
+// Más reciente primero; si empatan en fecha, mayor número primero.
+// sort es estable: los artículos con la misma fecha conservan el orden del JSON
+const sortRecursos = (items) => {
+    return [...items].sort((a, b) => {
+        const byDate = getRecursoTime(b) - getRecursoTime(a)
+        if (byDate !== 0) return byDate
+        return (b.numero || 0) - (a.numero || 0)
+    })
+}
 
-    const meta = createNewsletterElement("div", "newsletter-meta")
-    const number = createNewsletterElement("p", "newsletter-number", `Newsletter N°${newsletter.numero}`)
-    const date = createNewsletterElement("time", "newsletter-date", formatNewsletterDate(newsletter.fecha))
-    date.dateTime = newsletter.fecha
-    meta.append(number, date)
+const createRecursoBody = (item, isNewsletter) => {
+    
+    if (!isNewsletter) return createRecursoElement("p", "newsletter-description", item.descripcion)
 
-    const title = createNewsletterElement("h2", "newsletter-card-title", newsletter.titulo)
-    const topics = createNewsletterElement("ul", "newsletter-topics")
-    newsletter.temas.forEach((topicText) => {
-        topics.append(createNewsletterElement("li", "newsletter-topic", topicText))
+    const topics = createRecursoElement("ul", "newsletter-topics")
+    ;(item.temas || []).forEach((topicText) => {
+        topics.append(createRecursoElement("li", "newsletter-topic", topicText))
     })
 
-    const button = createNewsletterElement("a", "newsletter-btn", "Leer más")
-    button.href = newsletter.enlace
+    return topics
+}
+
+const createRecursoCard = (item) => {
+    const category = item.categoria || "newsletter"
+    const isNewsletter = category === "newsletter"
+    const label = isNewsletter ? `Newsletter N°${item.numero}` : "Artículo"
+    const buttonText = isNewsletter ? "Leer más" : "Leer artículo"
+
+    const card = createRecursoElement("article", "newsletter-card")
+    card.dataset.category = category
+
+    const icon = createRecursoElement("img", "newsletter-icon")
+    icon.src = isNewsletter ? NEWSLETTER_ICON_URL : ARTICLE_ICON_URL
+    icon.alt = ""
+
+    const meta = createRecursoElement("div", "newsletter-meta")
+    meta.append(createRecursoElement("p", "newsletter-number", label))
+
+    // Solo los newsletters muestran fecha; en los artículos solo sirve para ordenar
+    if (isNewsletter)
+    {
+        const date = createRecursoElement("time", "newsletter-date", formatRecursoDate(item.fecha))
+        date.dateTime = item.fecha
+        meta.append(date)
+    }
+
+    const title = createRecursoElement("h2", "newsletter-card-title", item.titulo)
+    const body = createRecursoBody(item, isNewsletter)
+
+    const button = createRecursoElement("a", "newsletter-btn", buttonText)
+    button.href = item.enlace
     button.target = "_blank"
     button.rel = "noopener noreferrer"
-    button.setAttribute("aria-label", `Leer más: Newsletter N°${newsletter.numero}, ${newsletter.titulo}`)
+    button.setAttribute("aria-label", `${buttonText}: ${label}, ${item.titulo}`)
 
-    card.append(icon, meta, title, topics, button)
+    card.append(icon, meta, title, body, button)
     return card
 }
 
-const showNewsletterMessage = (grid, text) => {
-    grid.replaceChildren(createNewsletterElement("p", "newsletter-message", text))
+const showRecursosMessage = (grid, text) => {
+    grid.replaceChildren(createRecursoElement("p", "newsletter-message", text))
 }
 
-const initNewsletters = async (initialFilter = null) => {
+const initRecursos = async (initialFilter = null) => {
     const grid = DOM.mainContent.querySelector(".newsletter-grid") 
     if (!grid) return
 
     try 
     {
-        const response = await fetch(NEWSLETTERS_DATA_URL)
+        const response = await fetch(RECURSOS_DATA_URL)
         if (!response.ok) throw new Error(`HTTP ${response.status}`)
 
-        const newsletters = await response.json()
-        if (!Array.isArray(newsletters) || !newsletters.length)
+        const recursos = await response.json()
+        if (!Array.isArray(recursos) || !recursos.length)
         {
-            showNewsletterMessage(grid, "Todavía no hay newsletters publicados.")
+            showRecursosMessage(grid, "Todavía no hay recursos publicados.")
             return
         }
 
         const cards = document.createDocumentFragment()
-        newsletters.forEach((newsletter) => {
-            cards.append(createNewsletterCard(newsletter))
+        sortRecursos(recursos).forEach((newsletter) => {
+            cards.append(createRecursoCard(newsletter))
         })
         grid.replaceChildren(cards)
 
         // Las cards ya están en el DOM, ahora se activan los filtros y "Cargar más"
-        initNewsletterFilters(initialFilter)
+        initRecursosFilters(initialFilter)
     } 
     catch (err) 
     {
-        console.error("Error al cargar los newsletters:", err)
-        showNewsletterMessage(grid, "No pudimos cargar los newsletters. Intenta de nuevo más tarde.")
+        console.error("Error al cargar el recurso:", err)
+        showRecursosMessage(grid, "No pudimos cargar los recursos. Intenta de nuevo más tarde.")
     }
 }
 
-const initNewsletterFilters = (initialFilter = null) => {
+const initRecursosFilters = (initialFilter = null) => {
     const grid = DOM.mainContent.querySelector(".newsletter-grid")
     const filters = DOM.mainContent.querySelectorAll(".recursos-filter")
     const emptyState = DOM.mainContent.querySelector(".newsletter-empty")

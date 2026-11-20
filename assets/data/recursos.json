@@ -284,7 +284,7 @@
     ],
     "enlace": "https://app.getresponse.com/view.html?x=a62b&m=BZem06&u=VSq3G&z=E9Oi94Z&o=pp_1"
   },
-    {
+  {
     "numero": 25,
     "fecha": "2026-10-17",
     "titulo": "El TOC en niños y adolescentes, señales que no siempre se ven",
@@ -295,5 +295,13 @@
         "Un ejercicio práctico para reconocer el malestar, identificar cuándo necesitamos apoyo y hablar con una persona de confianza"
     ],
     "enlace": "https://app.getresponse.com/view.html?x=a62b&m=BZPJJe&u=VSq3G&z=EExvV5F&o=pp_1"
+  },
+  
+  {
+    "categoria": "articulos",
+    "fecha": "2026-11-20",
+    "titulo": "TOC: mitos, mentiras y estereotipos",
+    "descripcion": "El trastorno obsesivo-compulsivo (TOC) es una condición de salud mental que suele ser mal representada en los medios de comunicación, rodeada de estereotipos y desinformación. Muchas de las ideas que circulan sobre el TOC no solo son falsas, sino que también contribuyen al estigma hacia las personas que lo presentan.",
+    "enlace": "https://drive.google.com/file/d/1OY1uIDGEhKZcKJgmcPQ3AUDUI5JFvV8z/view?usp=drive_link"
   }
 ]

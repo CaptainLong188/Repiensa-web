@@ -7,7 +7,7 @@
     --color-6: #AA6754;
 
     /*-----Fonts-----*/
-    --font-navbar: 'Roboto', sans-serif;
+    --font-navbar: 'Josefin Sans', sans-serif;
     --font-heading: 'Playfair Display', serif;
     --font-text: 'Josefin Sans', sans-serif;
     --font-buttons: 'Outfit', sans-serif;
@@ -371,7 +371,7 @@
 }
 
 #project-section .project {
-    width: 22.5%;
+    width: 25%;
     margin: 10px 60px;
     border-radius: 20px;
     padding: 5px;
@@ -402,8 +402,8 @@
 #project-section .project-description {
     font-family: var(--font-text);
     font-size: var(--fs-body);
-    text-align: center;
-    padding: 15px;
+    text-align: justify;
+    padding: 25px;
     letter-spacing: 0.04em;
     font-weight: 600;
     line-height: 200%;
@@ -802,7 +802,7 @@
     font-size: clamp(0.9rem, 2vw, 1.2rem);
     line-height: 2;
     letter-spacing: 0.02em;
-    text-align: center;
+    text-align: justify;
 }
 
 @media (max-width: 991px) {
@@ -850,7 +850,7 @@
 
 .fundadora-photo {
     flex: 1 1 35%;
-    max-width: 380px;
+    max-width: 400px;
 }
 
 .fundadora-photo img {
@@ -858,7 +858,7 @@
     height: auto;
     aspect-ratio: 4 / 5;
     object-fit: cover;
-    border-radius: 20px;
+    border-radius: 15px;
     display: block;
     box-shadow: 0 10px 30px rgba(0,0,0,0.25);
 }
@@ -1666,6 +1666,14 @@
     padding-left: 1.1rem;
     font-size: clamp(0.8rem, 0.5vw + 0.55rem, 0.9rem);
     line-height: 1.6;
+    text-align: left;
+}
+
+.newsletter-description {
+    flex-grow: 1;
+    margin: 0 0 clamp(1rem, 1.5vw, 1.25rem);
+    font-size: clamp(0.8rem, 0.5vw + 0.55rem, 0.9rem);
+    line-height: 1.8;
     text-align: left;
 }
 
